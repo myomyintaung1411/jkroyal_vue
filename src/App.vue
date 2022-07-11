@@ -61,7 +61,8 @@ body {
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.7;
   font-family: "Open Sans", sans-serif;
-  background: #350b2d;
+  /* background: #350b2d; */
+  @apply bg-slate-700;
   min-height: 100vh;
   max-height: 100vh;
   height: 100vh;
