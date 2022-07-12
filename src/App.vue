@@ -58,7 +58,7 @@ body {
   padding: 0;
   margin: 0;
   font-size: 16px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255);
   line-height: 1.7;
   font-family: "Open Sans", sans-serif;
   /* background: #350b2d; */

@@ -189,7 +189,7 @@
       </div>
     </div>
     <ModalDialog :show="modal" @close="modal = false">
-    <div class="  bg-slate-700 min-w-[1350px] w-[90vw] h-[90vh] pt-12 ">
+    <div class="  bg-slate-700 min-w-[1350px] w-[90vw] h-[95vh] pt-12   ">
       <div class="w-full flex   ">
          <div  class=" w-[500px] max-w-[500px]   flex overflow-hidden   bg-slate-800 h-52  shadow-lg  shadow__  cursor-pointer ">
             <div class="py-3 px-3 text-center space-y-5 whitespace-nowrap max-w-[120px] overflow-hidden   bg__info_img ">
@@ -251,6 +251,56 @@
             </div>
           </div>
        </div>
+      </div>
+      <div class=" mt-2   table_wrap w-full touch-none">
+          <table class="border-collapse table-fixed   border-none w-full  __table    ">
+            <thead class="text-center border-b bg-slate-500  sticky top-0 h-full py-2">
+              <tr class="text-center ">
+                <th class="border border-slate-600  font-bold">皇家娱乐</th>
+                <th class="border border-slate-600  font-bold">皇家娱乐</th>
+                <th class="border border-slate-600    font-bold">皇家娱乐</th>
+                <th class="border border-slate-600  font-bold">皇家娱乐</th>
+                <th class="border border-slate-600  font-bold">皇家娱乐</th>
+                <th class="border border-slate-600  font-bold">皇家娱乐</th>
+                <th class="border border-slate-600  font-bold">皇家娱乐</th>
+                <th class="border border-slate-600  font-bold">皇家娱乐</th>
+                <th class="border border-slate-600  font-bold">皇家娱乐</th>
+                <th class="border border-slate-600 text-red-400 font-bold">庄</th>
+                <th class="border border-slate-600 text-indigo-200  font-bold">闲</th>
+                <th class="border border-slate-600 text-green-300 font-bold">和</th>
+                <th class="border border-slate-600 text-red-400 font-bold">庄对</th>
+                <th class="border border-slate-600 text-indigo-200 font-bold">闲对</th>
+                <th class="border border-slate-600 text-indigo-200 font-bold">闲对</th>
+              </tr>
+            </thead>
+            <tbody class="text-center  overflow-scroll  py-2   ">
+              <tr v-for="n in 30" :key="n">
+                <td class="border border-slate-600 text-xl font-bold   text-white " >{{n}}</td>
+                <td class="border border-slate-600  text-red-400  ">1000</td>
+                <td class="border border-slate-600  text-indigo-200">1000</td>
+                <td class="border border-slate-600  text-green-300">100</td>
+                <td class="border border-slate-600  text-red-400">100</td>
+                <td class="border border-slate-600  text-indigo-200">100</td>
+                <td class="border border-slate-600  text-indigo-200">100</td>
+                <td class="border border-slate-600  text-indigo-200">100</td>
+                <td class="border border-slate-600  text-indigo-200">100</td>
+                <td class="border border-slate-600  text-indigo-200">100</td>
+                <td class="border border-slate-600  text-indigo-200">100</td>
+                <td class="border border-slate-600  text-indigo-200">100</td>
+                <td class="border border-slate-600  text-indigo-200">100</td>
+                <td class="border border-slate-600  text-indigo-200">100</td>
+                <td class="border border-slate-600  text-indigo-200">10000</td>
+              </tr>
+              <!-- <tr>
+                <td class="border border-slate-600 text-xl font-bold  text-white">闲对</td>
+                <td class="border border-slate-600  text-red-400">100</td>
+                <td class="border border-slate-600  text-indigo-200">100</td>
+                <td class="border border-slate-600  text-green-300">100</td>
+                <td class="border border-slate-600  text-red-400">100</td>
+                <td class="border border-slate-600  text-indigo-200">100</td>
+              </tr> -->
+            </tbody>
+          </table>
       </div>
     </div>
   </ModalDialog>
@@ -354,8 +404,8 @@ const initData = () => {
   dl.value.clNum = 0
   dl.value.stat = {}
   dl.value.pointCol = 0
-  for (let i = 0; i < colsNumUnit; i++) {
-    dl.value.lst.push([200, 201, 202, 203, 204, 205])
+  for (let i = 0; i < colsNumUnit * 2; i++) {
+    dl.value.lst.push([200, 201, 202, 0, 0, 0])
   }
   // dy.lst = []
   // dy.col = dy.row = dy.pr = dy.pc = dy.nc = 0
@@ -451,5 +501,13 @@ const initData = () => {
 }
 .cell:last-child{
   border-bottom: 1px solid transparent;
+}
+.table_wrap{
+  max-height: 50vh;
+  overflow-y: scroll;
+  display:block;
+}
+.__table{
+  overflow: scroll !important;
 }
 </style>
