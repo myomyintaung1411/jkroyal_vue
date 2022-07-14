@@ -18,7 +18,7 @@
                 </svg>
               </div>
 
-              <input v-model="name" id="name" type="name" name="name" class="text-sm placeholder-gray-500 text-gray-500 pl-10 pr-4 rounded-2xl w-full py-2 focus:outline-none outline-none" placeholder="请输入账号" />
+              <input v-model="name" id="name" type="name" autocomplete="off" name="name" class="text-sm placeholder-gray-500 text-gray-500 pl-10 pr-4 rounded-2xl w-full py-2 focus:outline-none outline-none" placeholder="请输入账号" />
             </div>
           </div>
           <div class="flex flex-col mb-6">
@@ -29,7 +29,7 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
               </div>
-              <input v-model="password" id="password" :autocomplete="false" :type="passwordField" name="password" class="__p text-sm placeholder-gray-500 text-gray-500 pl-10 pr-16 rounded-2xl w-full py-2 focus:outline-0 outline-none focus:outline-none selection:outline-none border-none focus:border-none outline-hidden shadow-none outline-0" placeholder="请输入密码" />
+              <input v-model="password" id="password" autocomplete="off" :type="passwordField" name="password" class="__p text-sm placeholder-gray-500 text-gray-500 pl-10 pr-16 rounded-2xl w-full py-2 focus:outline-0 outline-none focus:outline-none selection:outline-none border-none focus:border-none outline-hidden shadow-none outline-0" placeholder="请输入密码" />
               <div class="inline-flex items-center justify-center absolute right-3 top-0 h-full w-10 text-gray-400 md:cursor-pointer">
                 <EyeIcon v-if="passwordField !== 'password'" @click="ShowVisibility" class="w-4 h-5" />
                 <EyeOffIcon v-else @click="ShowVisibility" class="w-4 h-5 text-yellow-700" />
@@ -62,8 +62,8 @@ import {
 } from "@heroicons/vue/solid";
 import { ref, computed, onMounted, watch } from "vue";
 import { useRouter } from "vue-router";
-// import md5 from "js-md5";
-// import pomelo from "@/socket/pomelo.js";
+import md5 from "js-md5";
+import pomelo from "@/socket/pomelo.js";
 // import AES from "@/utils/aes";
 
 export default {
@@ -74,12 +74,9 @@ export default {
   },
   data() {
     return {
-      name: "",
-      password: "",
+      name: "admin",
+      password: "111111",
       passwordField: "password",
-      identifyCodes: "1234567890abcdefjhijk1234567890linopqrsduvwxyz", // Captcha components
-      identifyCode: "", // Verification code generation results
-      code: "", // Verification code input content
     };
   },
   computed: {
@@ -99,7 +96,20 @@ export default {
     },
 
     login() {
-    
+      const sendStr = {
+        router: 'Login',
+        JsonData: { name: this.name, password: md5(this.password), ip: '', terminal: 'jk' }
+      } 
+      this.$store.dispatch('app/login', sendStr).then(() => {
+        pomelo.conn((err,res)=>{
+          if(err) console.error(err);
+          if(res.code === 200){
+            this.$router.push('/')
+          }
+        })
+      }).catch((e)=>{
+        console.error(e);
+      })
     },
   },
 };

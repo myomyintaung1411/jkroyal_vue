@@ -10,6 +10,17 @@ export default defineConfig({
     },
   },
   server: {
-    open: true,
+    open: false,
+    https: false,
+    hot: true,
+    port:9000,
+    proxy: {
+      '/api': {
+        target: 'http://192.168.1.10:3198/',
+        ws: true,
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
   },
 })

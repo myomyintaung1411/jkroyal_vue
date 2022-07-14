@@ -4,7 +4,8 @@
 import './PomeloClient.js'
 import ws from "./ws2";
 import store from '@/store/index.js';
-import Swal from "sweetalert2";
+import global from '@/utils/global.js';
+import AES from '@/utils/aes.js';
 var nHeartBeat = 0
 var s_timer = null
 var kickk = false
@@ -15,16 +16,17 @@ var p_server = new Pomelo()
 var p_server2 = new Pomelo()
 
 function conn(cb) {
-  var u_id = store.state.user.userId
-  var token = store.state.user.token
+  var u_id = store.state.app.user.Id
+  var token = store.state.app.token
+  console.log(u_id,token + 'user and token');
   var msg = { uid: u_id }
   var msg2 = { userId: msg.uid, token: token, rType: 'ty' }
   console.log("&&&&&&&", msg2);
   p_server.init(
     {
       //host: process.env.NODE_ENV == 'development' ? process.env.VUE_APP_DEV_POMELO : process.env.VUE_APP_PRO_POMELO,
-      host: '45.116.165.93',
-      port: 3014,
+      host: '192.168.1.10',
+      port: 8014,
       log: true
     },
 
@@ -54,8 +56,7 @@ function conn(cb) {
                     cb(null, res)
                   } else {
                     console.log("error");
-                    window.$route.root.push('/401')
-                    //localStorage.removeItem("t")
+                                        //localStorage.removeItem("t")
                     //  window.location.reload()
                     // global.loginUser()
                     // window.location.reload()
@@ -115,18 +116,19 @@ p_server2.on('onKick', function (e) {
   clsInterval(interval)
   clsInterval(s_timer)
   p_server2.disconnect()
-  Swal.fire({
-    toast: true,
-    position: "center",
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    icon: "warning",
-    grow: false,
-    background: "#374151",
-    color: "#fff",
-    title: '您的账号已登录其它游戏!',
-  })
+  console.error('您的账号已登录其它游戏');
+  // Swal.fire({
+  //   toast: true,
+  //   position: "center",
+  //   showConfirmButton: false,
+  //   timer: 3000,
+  //   timerProgressBar: true,
+  //   icon: "warning",
+  //   grow: false,
+  //   background: "#374151",
+  //   color: "#fff",
+  //   title: '您的账号已登录其它游戏!',
+  // })
   localStorage.clear()
   setTimeout(() => {
     kick()
@@ -140,33 +142,38 @@ function kick() {
   // p_server2.disconnect()
   // console.log("kickkkkkkkkkkkkkk");
   // clearInterval(s_timer)
-  Swal.fire({
-    title: "Oops...",
-    text: "相同账号登录！",
-    icon: "error",
-    showCancelButton: false,
-    allowOutsideClick: false,
-    backdrop: true,
-    confirmButtonText: "确定",
-    color: "#000",
-  }).then((res) => {
-    if (res.isConfirmed) {
-      localStorage.clear()
-      window.location.reload()
-    }else{
-      window.opener = null
-      window.open("about:blank", "_self")
-      window.close()
-    }
-  }).catch((e) => {
-    console.error(e)
-  })
+  // Swal.fire({
+  //   title: "Oops...",
+  //   text: "相同账号登录！",
+  //   icon: "error",
+  //   showCancelButton: false,
+  //   allowOutsideClick: false,
+  //   backdrop: true,
+  //   confirmButtonText: "确定",
+  //   color: "#000",
+  // }).then((res) => {
+  //   if (res.isConfirmed) {
+  //     localStorage.clear()
+  //     window.location.reload()
+  //   }else{
+  //     window.opener = null
+  //     window.open("about:blank", "_self")
+  //     window.close()
+  //   }
+  // }).catch((e) => {
+  //   console.error(e)
+  // })
 }
 
 var n = 0
 function send(msg, cb) {
   n = n + 1
-  p_server2.request(msg.route, msg.data, cb)
+  const en = global.gameEn
+  const msgSend = AES.encrypt(JSON.stringify(msg), en)
+  p_server2.request('agent.agentHandler.getMsg', msgSend, function (res) {
+    // console.log('res ', res)
+    cb(JSON.parse(AES.decrypt(res, en)))
+  })
 }
 
 /**
@@ -189,7 +196,7 @@ function startTimer() {
 }
 
 function chkHeartBeat(server) {
-  var userId = store.state.user.userId
+  var u_id = store.state.app.user.Id
   console.log('CheckHeart |Beat', nHeartBeat)
   if (nHeartBeat > 60) {
     console.log('重连时间过长...请检查网络链接或重新登录！！！')
@@ -199,9 +206,9 @@ function chkHeartBeat(server) {
     window.location.reload()
   }
   nHeartBeat += 5
-  var msg = { uid: userId } // 记得改
+  var msg = { uid: u_id } // 记得改
   // console.log("chkHeartBeat msg",msg);
-  var route = 'ty.tyHandler.chkHardBean'
+  var route = 'agent.agentHandler.chkHardBean'
   server.request(route, msg, function (data) {
     if (data.code == '07') {
       nHeartBeat = 0

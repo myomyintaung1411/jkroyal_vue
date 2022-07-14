@@ -20,25 +20,25 @@ const instance = axios.create({
   //   'Content-Type': 'application/json;'
   // }
 })
-const $loading = useLoading()
+// const $loading = useLoading()
 let loading
 let message = ''
 // 正在请求的数量
 let requestCount = 0
 // 显示loading
-const showLoading = () => {
-    loading = $loading.show({
-      canCancel: false,
-      color:'#2130A5',
-      loader: 'dots',
-    })
-}
-//隐藏loading
-const hideLoading = () => {
-    setTimeout(() => {
-      loading.hide()
-    }, 2000)
-}
+// const showLoading = () => {
+//     loading = $loading.show({
+//       canCancel: false,
+//       color:'#2130A5',
+//       loader: 'dots',
+//     })
+// }
+// //隐藏loading
+// const hideLoading = () => {
+//     setTimeout(() => {
+//       loading.hide()
+//     }, 2000)
+// }
 
 // 请求拦截器
 instance.interceptors.request.use((config) => {
