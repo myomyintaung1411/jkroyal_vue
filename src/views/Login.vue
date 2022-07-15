@@ -104,7 +104,7 @@ export default {
         pomelo.conn((err,res)=>{
           if(err) console.error(err);
           if(res.code === 200){
-            this.$router.push('/')
+            this.$router.push('/all')
           }
         })
       }).catch((e)=>{

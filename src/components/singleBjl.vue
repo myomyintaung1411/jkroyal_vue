@@ -1,7 +1,8 @@
 <template>
   
-    <div @click="showModal()"
-        class=" overflow-hidden w-[500px] max-w-[500px] min-w-[500px]   flex      bg-slate-800 h-52  shadow-lg mx-5 my-3 shadow__  cursor-pointer ">
+    <div @click="requstMore()"
+        class=" overflow-hidden w-[500px] max-w-[500px] min-w-[500px] flex 
+         bg-slate-800 h-52  shadow-lg   shadow__  cursor-pointer " :class="routeName === '/bjl' ? 'my-3 mx-5' : 'my-0'">
         <div class="py-3 px-1 text-center relative   w-[150px] overflow-hidden   bg-[#350b2d] ">
             <p class="text-white font-medium text-3xl ">{{ data.roomName }}</p>
             <div class="mt-24">
@@ -49,9 +50,10 @@
 </template>
 
 <script setup>
-import {onMounted, ref} from 'vue'
-import ModalDialog from "./ModalDialog.vue";
 import pomelo from "@/socket/pomelo.js";
+import { useRouter,useRoute } from "vue-router";
+import { useStore } from "vuex";
+import {ref,watch} from 'vue'
 
  const props = defineProps({
   data: {
@@ -59,14 +61,19 @@ import pomelo from "@/socket/pomelo.js";
     default: {},
   },
 });
-
-
-
-onMounted(() => {
-})
- const emit = defineEmits(["showModal"]);
-  
- const showModal = () => {
+const routeName = ref('')
+const route = useRoute()
+const store = useStore()
+const router = useRouter()
+    watch(
+      () => route.path,
+      () => {
+        console.log(route.path, "watching");
+        routeName.value = route.path;
+      },
+      { immediate: true, deep: true }
+    );
+function callBjlDetail() {
         const sendStr = {
         router: 'getDeskLists',
         JsonData: {
@@ -75,11 +82,30 @@ onMounted(() => {
           deskname: props.data.roomName
         }
       }
-      console.log(sendStr, "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
       pomelo.send(sendStr, res => {
         console.log('resp ', res)
+        store.commit("app/BjlDetail",res.JsonData.data)
+         router.push('/detail')
+        //  data.value = res.JsonData.data
       })
-    emit("showModal");
+}
+  
+ const requstMore = () => {
+  router.push({path:'/detail',query:{deskname:props.data.roomName}})
+    // callBjlDetail()
+  
+      //   const sendStr = {
+      //   router: 'getDeskLists',
+      //   JsonData: {
+      //     type: 'bjl',
+      //     findname: '',
+      //     deskname: props.data.roomName
+      //   }
+      // }
+      // console.log(sendStr, "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
+      // pomelo.send(sendStr, res => {
+      //   console.log('resp ', res)
+      // })
  }
 
 const greaterThan = (data) => {

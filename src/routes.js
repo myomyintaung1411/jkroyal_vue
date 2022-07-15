@@ -1,21 +1,49 @@
 import Home from './views/Home.vue'
 import NotFound from './views/NotFound.vue'
-import { createRouter,createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import store from '@/store/index'
-
+import Detail from '@/views/Detail.vue'
 /** @type {import('vue-router').RouterOptions['routes']} */
- const routes = [
+const routes = [
+  {
+    path: '/',
+    component: Home,
+    meta: { title: 'Home' },
+    redirect:'/all',
+    children: [
+      {
+        path: '/all',
+        name: 'All',
+        component: () => import('./views/All.vue'),
+        meta: { title: 'All' }
+      },
+      {
+        path: '/bjl',
+        name: 'Baccarat',
+        component: () => import('./views/Baccarat.vue'),
+        meta: { title: 'Baccarat' }
+      },
+      {
+        path: '/detail',
+        name: 'Detail',
+        component: () => import('./views/Detail.vue'),
+        meta: { title: 'Detail' }
+      },
+    ]
+  },
   {
     path: '/login',
-    name:'Login',
+    name: 'Login',
     meta: { title: 'Login' },
     // example of route level code-splitting
     // this generates a separate chunk (About.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-     component: () => import('./views/Login.vue')
+    component: () => import('./views/Login.vue')
   },
-  { path: '/', component: Home, meta: { title: 'Home' } },
-  { path: '/:path(.*)', redirect:'/login' },
+
+
+
+  { path: '/:path(.*)', redirect: '/login' },
 ]
 
 const router = createRouter({
@@ -28,15 +56,15 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const token = store.state.app.token
-    // If logged in, or going to the Login page.
-    if (token || to.name === 'Login') {
-      // Continue to page.
-      next()
-    } else {
-      // Not logged in, redirect to login.
-      next({name: 'Login'})
-    }
-  });
+  // If logged in, or going to the Login page.
+  if (token || to.name === 'Login') {
+    // Continue to page.
+    next()
+  } else {
+    // Not logged in, redirect to login.
+    next({ name: 'Login' })
+  }
+});
 
 
 

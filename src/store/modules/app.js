@@ -7,6 +7,7 @@ export default {
   state: () => ({
 
     user: {},
+    bjldetail:null,
     login: false,
     // token: sessionStorage.getItem('t') || '',
     // userId: sessionStorage.getItem('u_i') || '',
@@ -22,12 +23,17 @@ export default {
     USERID: state => state.userId,
     LToken: state => state.token,
     USER: state => state.user,
-    Game_En: state => state.gameEn
+    Game_En: state => state.gameEn,
+    BJL_Detail:state => state.bjldetail
   },
 
   mutations: {
     IS_LOGIN(state, payload) {
       state.login = payload
+    },
+    BjlDetail(state, payload) {
+      console.log(payload,"BjlDetail");
+      state.bjldetail = payload
     },
     /* User */
     SET_USERINFO(state, payload) {
