@@ -68,7 +68,7 @@ const router = useRouter()
     watch(
       () => route.path,
       () => {
-        console.log(route.path, "watching");
+        // console.log(route.path, "watching");
         routeName.value = route.path;
       },
       { immediate: true, deep: true }

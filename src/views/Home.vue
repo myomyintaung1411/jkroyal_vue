@@ -12,7 +12,7 @@
         <div class=" cursor-pointer">
           <div class="w-full py-3 px-3 rounded bg-slate-50 
           text-black hover:text-white hover:bg-slate-500 text-center shadow-xl 
-          ease-in duration-300 hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 0 ? 'bg-slate-500 text-white rounded-tl-3xl rounded-bl-3xl' : ''">
+          ease-in duration-300 hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 0 ? '__activeColor' : ''">
             <p class="text-2xl tracking-wide font-medium">All</p>
           </div>
         </div>
@@ -21,7 +21,7 @@
         <div class=" cursor-pointer">
           <div class="w-full py-3 px-3 rounded bg-slate-50 text-black 
           hover:text-white hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
-          hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 1 ? 'bg-slate-500 text-white rounded-tl-3xl rounded-bl-3xl' : ''">
+          hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 1 ? '__activeColor' : ''">
             <p class="text-2xl tracking-wide font-medium">Bjl</p>
           </div>
         </div>
@@ -56,11 +56,10 @@ const modal = ref(false);
 
 const activeTab = ref(0)
 const router = useRouter()
+const route = useRoute()
 // const bjlData = ref(null)
 
-// onMounted(()=>{
-//   getDeskLists('all')
-// })
+
 function showModal () {
   console.log("llllllllllllllllllemittttttttttttt");
   modal.value = true;
@@ -149,5 +148,11 @@ const clickData = (n) =>{
 }
 .__table{
   overflow: scroll !important;
+}
+.__activeColor{
+      background-color: rgb(100 116 139 / 1);
+      color:white;
+      border-top-left-radius: 1.5rem;
+      border-bottom-left-radius: 1.5rem
 }
 </style>

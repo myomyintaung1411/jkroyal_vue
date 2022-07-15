@@ -20,7 +20,8 @@ function getBjlLists(type) {
         }
     }
     pomelo.send(sendStr, res => {
-        if (res.JsonData.result == 'ok' && res.JsonData.data.length > 0) {
+        console.log(res.JsonData + 'res ************') ;
+        if (res.JsonData?.result == 'ok' && res.JsonData?.data.length > 0) {
             console.log('resp ', res.JsonData.data)
             bjlData.value = res.JsonData.data
             // console.log('bjlData data ', bjlData.value)
