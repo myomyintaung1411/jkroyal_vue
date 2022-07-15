@@ -1,11 +1,10 @@
 <template>
     <div class="w-full  flex flex-wrap ">
-        sdfsfds
         <!-- <singleBjl v-for="data in bjlData" :key="data.roomId" :data="data"></singleBjl> -->
     </div>
 </template>
 
-<!-- <script setup>
+<script setup>
 import singleBjl from "@/components/singleBjl.vue";
 import pomelo from "@/socket/pomelo.js";
 import { ref, onMounted } from 'vue'
@@ -35,4 +34,4 @@ onMounted(() => {
 </script>
 
 <style>
-</style> -->
+</style>

@@ -1,8 +1,8 @@
 <template>
   
-    <div v-if="data" @click="requstMore()"
+    <!-- <div v-if="data" @click="requstMore()"
         class=" overflow-hidden w-[500px] max-w-[500px] min-w-[500px] flex 
-         bg-slate-800 h-52  shadow-lg   shadow__  cursor-pointer " :class="routeName === '/bjl' ? 'my-3 mx-5' : 'my-0'">
+         bg-slate-800 h-52  shadow-lg   shadow__  cursor-pointer " :class="routeName === '/dgtiger' ? 'my-3 mx-5' : 'my-0'">
         <div class="py-3 px-1 text-center relative   w-[150px] overflow-hidden   bg-[#350b2d] ">
             <p class="text-white font-medium text-3xl ">{{ data.roomName }}</p>
             <div class="mt-24">
@@ -46,9 +46,50 @@
             </table>
             <div class="w-full h-[15%] text-center text-2xl">庄闲差 : {{ greaterThan(data.detail) }}</div>
         </div>
+    </div> -->
+    <div  @click="requstMore()"
+        class=" overflow-hidden w-[500px] max-w-[500px] min-w-[500px] flex 
+         bg-slate-800 h-52  shadow-lg   shadow__  cursor-pointer " :class="routeName === '/dgtiger' ? 'my-3 mx-5' : 'my-0'">
+        <div class="py-3 px-1 text-center relative   w-[150px] overflow-hidden   bg-[#350b2d] ">
+            <p class="text-white font-medium text-3xl ">VIP</p>
+            <div class="mt-24">
+                <h1 class="text-lg font-bold tracking-wide text-white text-center ">局口:0</h1>
+                <h1 class="text-lg font-bold tracking-wide text-white text-center ">限红:0</h1>
+            </div>
+        </div>
+
+        <div class=" w-[350px] overflow-hidden ">
+            <table class="border-collapse  border-none table-fixed w-[350px] overflow-hidden h-[85%] ">
+                <thead class="text-center ">
+                    <tr class="text-center">
+                        <th class="w-8"></th>
+                        <th class="border border-slate-600 text-red-400 font-bold">庄</th>
+                        <th class="border border-slate-600 text-indigo-200  font-bold">闲</th>
+                        <th class="border border-slate-600 text-green-300 font-bold">和</th>
+                        <!-- <th class="border border-slate-600 text-red-400 font-bold">庄对</th>
+                        <th class="border border-slate-600 text-indigo-200 font-bold">闲对</th> -->
+                    </tr>
+                </thead>
+                <tbody class="text-center  overflow-hidden break-all  ">
+                    <tr>
+                        <td class="border border-slate-700 text-xl font-bold  "
+                            style="writing-mode: vertical-rl;text-orientation: upright;">投注</td>
+                        <td class="border border-slate-700  text-red-400  ">0</td>
+                        <td class="border border-slate-700  text-indigo-200">0</td>
+                        <td class="border border-slate-700  text-green-300">0</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-slate-700 text-xl font-bold "
+                            style="writing-mode: vertical-rl;text-orientation: upright; ">赔彩</td>
+                        <td class="border border-slate-700  text-red-400">0</td>
+                        <td class="border border-slate-700  text-indigo-200">0</td>
+                        <td class="border border-slate-700  text-green-300">0</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="w-full h-[15%] text-center text-2xl">庄闲差 : 2022</div>
+        </div>
     </div>
-    <!-- v-else -->
-    <div class="overflow-hidden w-[500px] max-w-[500px] min-w-[500px] flex justify-center items-center " v-else>no data</div>
 </template>
 
 <script setup>

@@ -26,6 +26,15 @@
           </div>
         </div>
         </div>
+        <div class="py-2 w-full" @click="clickData(2)" >
+        <div class=" cursor-pointer">
+          <div class="w-full py-3 px-3 rounded bg-slate-50 text-black 
+          hover:text-white hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
+          hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 2 ? '__activeColor' : ''">
+            <p class="text-2xl tracking-wide font-medium">DragonTiger</p>
+          </div>
+        </div>
+        </div>
         <div class="absolute bottom-0   m-auto left-0 right-0 cursor-pointer">
           <div class="p-3 rounded bg-slate-50 flex justify-center items-center">
             <LogoutIcon class="w-10 h-10 text-[#350b2d]"></LogoutIcon>
@@ -34,9 +43,6 @@
       </div>
       <div class="main-content w-[calc(100%_-_15rem)]  h-screen relative  p-5 overflow-y-scroll ">
         <router-view/>
-        <!-- <div class="w-full  flex flex-wrap ">
-          <Bjl v-for="data in bjlData" :key="data.roomId"  :data="data" @showModal="showModal"></Bjl>
-        </div> -->
      </div>
     </div>
     
@@ -74,6 +80,10 @@ const clickData = (n) =>{
       break;
     case 1:
       router.push('/bjl')
+     // getBjlLists('bjl')
+      break;
+    case 2:
+      router.push('/dgtiger')
      // getBjlLists('bjl')
       break;
   

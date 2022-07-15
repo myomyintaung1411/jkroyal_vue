@@ -5,7 +5,7 @@ import {login} from '@/network/allApi'
 export default {
 
   state: () => ({
-
+    tableBetData:null,
     user: {},
     bjldetail:null,
     login: false,
@@ -24,10 +24,14 @@ export default {
     LToken: state => state.token,
     USER: state => state.user,
     Game_En: state => state.gameEn,
-    BJL_Detail:state => state.bjldetail
+    BJL_Detail:state => state.bjldetail,
+    Table_BetData:state => state.tableBetData
   },
 
   mutations: {
+    TABLE_BETDATA(state,payload) {
+      state.tableBetData = payload
+    },
     IS_LOGIN(state, payload) {
       state.login = payload
     },

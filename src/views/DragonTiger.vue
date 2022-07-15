@@ -1,11 +1,12 @@
 <template>
     <div class="w-full  flex flex-wrap ">
-        <singleBjl v-for="data in bjlData" :key="data.roomId" :data="data" ></singleBjl>
+        <singleDragonTiger v-for="n in 4" :key="n"></singleDragonTiger>
+        <!-- <singleBjl v-for="data in bjlData" :key="data.roomId" :data="data" ></singleBjl> -->
     </div>
 </template>
 
 <script setup>
-import singleBjl from "@/components/singleBjl.vue";
+import singleDragonTiger from "@/components/singleDragonTiger.vue";
 import pomelo from "@/socket/pomelo.js";
 import { ref, onMounted } from 'vue'
 const bjlData = ref(null)
@@ -30,7 +31,7 @@ function getBjlLists(type) {
     })
 }
 onMounted(() => {
-    getBjlLists('bjl')
+    // getBjlLists('bjl')
 })
 </script>
 

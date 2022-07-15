@@ -1,8 +1,8 @@
 <template>
     <div class="  bg-slate-700 w-full overflow-hidden  ">
         <div v-if="data" class="w-full flex  ">
-            <singleBjl :data="data"></singleBjl>
-            <div v-if="dl.lst" class=" scroll_main bg-slate-800 overflow-y-hidden relative">
+            <singleBjl  :data="data"></singleBjl>
+            <div  class=" scroll_main bg-slate-800 overflow-y-hidden relative">
                 <div @click="moveData()"
                     class="dl-section r-section text-white whitespace-nowrap   h-full overflow-y-hidden  ">
                     <!-- {{dl.lst}} -->
@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-        <div class=" mt-2   table_wrap w-full min-w-[1350px] touch-none">
+        <!-- <div class=" mt-2   table_wrap w-full min-w-[1350px] touch-none">
             <table class="border-collapse table-fixed   border-none w-full  __table ">
                 <thead class="text-center border-b bg-slate-500  sticky top-0 h-full py-2">
                     <tr class="text-center ">
@@ -30,11 +30,6 @@
                         <th class="border border-slate-600  font-bold">当前余额</th>
                         <th class="border border-slate-600  font-bold">投注IP</th>
                         <th class="border border-slate-600 text-red-400 font-bold w-16">终端</th>
-                        <!-- <th class="border border-slate-600 text-indigo-200  font-bold">闲</th>
-                <th class="border border-slate-600 text-green-300 font-bold">和</th>
-                <th class="border border-slate-600 text-red-400 font-bold">庄对</th>
-                <th class="border border-slate-600 text-indigo-200 font-bold">闲对</th>
-                <th class="border border-slate-600 text-indigo-200 font-bold">闲对</th> -->
                     </tr>
                 </thead>
                 <tbody class="text-center  overflow-scroll      ">
@@ -78,25 +73,11 @@
                             </div>
 
                             <div v-if="bet.rType === 'nn'" class="nn_info">
-                                <!-- <span v-if="bet.niuniuResult" style="position: absolute; right: 5px; top: 5px;">
-                <el-popover
-                  placement="top-start"
-                  :title="$t('table.result_detail')"
-                  width="200"
-                  trigger="hover"
-                  :content="${$t('table.first_gate')} = ${bet.result.split('|')[0]}; 
-                  ${$t('table.second_gate')} = ${bet.result.split('|')[1]}; 
-                  ${$t('table.third_gate')} = ${bet.result.split('|')[2]}"
-                >
-                  <el-button slot="reference" icon="el-icon-question" circle size="mini" />
-                </el-popover>
-              </span> -->
                                 <div>
                                     <span v-for="(n, index) in bet.niuniu" :key="index" class="nn_info_container">
                                         <p class="nn_info_title"
                                             :style="n.indexOf('闲') != -1 ? 'color: blue' : 'color: red'">
                                             {{ n }}
-                                            <!-- <span style="color: #000">：</span> -->
                                         </p>
                                     </span>
                                 </div>
@@ -116,7 +97,6 @@
                                 </div>
                             </div>
                         </td>
-                        <!-- <td class="border border-slate-600  text-indigo-200">{{xzmx(bet.xzmx,bet.rType)}}</td> -->
                         <td class="border border-slate-600  text-white">{{ bet.xz }}</td>
                         <td class="border border-slate-600  text-white">{{ bet.ye }}</td>
                         <td class="border border-slate-600  text-white">{{ bet.ip }}</td>
@@ -124,8 +104,9 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-    </div>
+        </div> -->
+     <TableData></TableData>
+   </div>
 </template>
 
 <script setup>
@@ -135,6 +116,7 @@ import { useRoute } from 'vue-router';
 import singleBjl from "../components/singleBjl.vue";
 import { useStore } from "vuex";
 import global from '@/utils/global';
+import TableData from '@/components/TableData.vue';
 const route = useRoute();
 const store = useStore()
 //
@@ -181,21 +163,21 @@ const dl = ref(
     },
 )
 const bjl_data = computed(() => store.getters["app/BJL_Detail"]);
-function transGameStr(strGame) {
-    // 游戏类型转换
-    var msg = {
-        bjl: '百家乐',
-        lh: '龙虎',
-        nn: '牛牛',
-        xjh: '炸金花',
-        dx: '大小',
-        tts: '推筒子',
-        ssc: '时时彩',
-        jsk3: '江苏快3',
-        bjcs: '北京赛车'
-    }
-    return msg[strGame]
-}
+// function transGameStr(strGame) {
+//     // 游戏类型转换
+//     var msg = {
+//         bjl: '百家乐',
+//         lh: '龙虎',
+//         nn: '牛牛',
+//         xjh: '炸金花',
+//         dx: '大小',
+//         tts: '推筒子',
+//         ssc: '时时彩',
+//         jsk3: '江苏快3',
+//         bjcs: '北京赛车'
+//     }
+//     return msg[strGame]
+// }
 function __dataFormat(rData) {
     var data = rData
     var betOrderInquireForm = { tableData: [], totalItemsNum: 0 }
@@ -221,6 +203,7 @@ function __dataFormat(rData) {
         tableData[i].showResult = tableData[i].niuniu.map((item, index) => {
             return item + ':' + tableData[i].niuniuBet[index]
         })
+        store.commit("app/TABLE_BETDATA", tableData);
         betsData.value = tableData
         // tableData[i].tablePara = getTablePara(
         //     data[i].rType, tableData[i].betOrderInfo)

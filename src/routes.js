@@ -24,6 +24,12 @@ const routes = [
         meta: { title: 'Baccarat' }
       },
       {
+        path: '/dgtiger',
+        name: 'DragonTiger',
+        component: () => import('./views/DragonTiger.vue'),
+        meta: { title: 'DragonTiger' }
+      },
+      {
         path: '/detail',
         name: 'Detail',
         component: () => import('./views/Detail.vue'),
