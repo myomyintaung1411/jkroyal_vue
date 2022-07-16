@@ -113,7 +113,7 @@ function callMoreData() {
         JsonData: {
             type: 'lh',
             findname: '',
-            deskname: route.query.deskname
+            dragonRoomId: route.query.deskname
         }
     }
     pomelo.send(sendStr, res => {

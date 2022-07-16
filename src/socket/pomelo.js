@@ -25,7 +25,7 @@ function conn(cb) {
   p_server.init(
     {
       //host: process.env.NODE_ENV == 'development' ? process.env.VUE_APP_DEV_POMELO : process.env.VUE_APP_PRO_POMELO,
-      host: '192.168.1.10',
+      host: '192.168.33.3',
       port: 8014,
       log: true
     },

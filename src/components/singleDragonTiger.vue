@@ -1,7 +1,7 @@
 <template>
     <div  @click="requstMore()"
         class=" overflow-hidden w-[500px] max-w-[500px] min-w-[500px] flex 
-         bg-slate-800 h-52  shadow-lg   shadow__  cursor-pointer " :class="routeName === '/dgtiger' ? 'my-3 mx-5' : 'my-0'">
+         bg-slate-800 h-52  shadow-lg   shadow__  cursor-pointer " :class="routeName === '/dgtiger' || routeName === '/all' ? 'my-3 mx-5' : 'my-0'">
         <div class="py-3 px-1 text-center relative   w-[150px] overflow-hidden   bg-[#350b2d] ">
             <p class="text-white font-medium text-3xl ">{{ data.roomName }}</p>
             <div class="mt-24">
@@ -70,7 +70,7 @@ const router = useRouter()
     );
 
  const requstMore = () => {
-  router.push({path:'/dragonDetail',query:{deskname:props.data.roomId}})
+  router.push({path:'/dragonDetail',query:{dragonRoomId:props.data.roomId}})
  }
 
 const greaterThan = (data) => {

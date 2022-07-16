@@ -6,7 +6,7 @@
                 <div @click="moveData()"
                     class="dl-section r-section  whitespace-nowrap   h-full overflow-y-hidden  ">
                     <!-- {{dl.lst}} -->
-                    <div class="col c2  h-80   text-center  " v-for="(item, idx) in nnp.lst" :key="idx">
+                    <div class="col c2  h-[280px]   text-center  " v-for="(item, idx) in nnp.lst" :key="idx">
                     <!-- {{item}} -->
                         <div class="cell w-[45px] text-center overflow-hidden  ">
                             <div class="nn-b-d w-full h-full relative">
@@ -141,7 +141,7 @@ function callMoreData() {
         JsonData: {
             type: 'nn',
             findname: '',
-            deskname: route.query.deskname
+            deskname: route.query.cowRoomId
         }
     }
     pomelo.send(sendStr, res => {
@@ -352,7 +352,7 @@ function moveData() {
 .cell {
     border-bottom: 1px solid;
     @apply border-slate-700;
-    height: calc(320px / 4);
+    height: calc(280px / 4);
     width: calc(320px / 4);
 }
 

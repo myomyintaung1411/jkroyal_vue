@@ -2,7 +2,7 @@
   
     <div v-if="data" @click="requstMore()"
         class=" overflow-hidden w-[500px] max-w-[500px] min-w-[500px] flex 
-         bg-slate-800 h-52  shadow-lg   shadow__  cursor-pointer " :class="routeName === '/bjl' ? 'my-3 mx-5' : 'my-0'">
+         bg-slate-800 h-52  shadow-lg   shadow__  cursor-pointer " :class="routeName === '/bjl' || routeName === '/all' ? 'my-3 mx-5' : 'my-0'">
         <div class="py-3 px-1 text-center relative   w-[150px] overflow-hidden   bg-[#350b2d] ">
             <p class="text-white font-medium text-3xl ">{{ data.roomName }}</p>
             <div class="mt-24">

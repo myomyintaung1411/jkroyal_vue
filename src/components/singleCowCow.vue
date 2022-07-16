@@ -1,7 +1,7 @@
     <template>
     <div  @click="requstMore()"
-        class=" overflow-hidden w-[632px] max-w-[632px]  flex 
-         bg-slate-800 h-80  shadow-lg   shadow__  cursor-pointer " :class="routeName === '/cowcow' ? 'my-3 mx-3' : 'my-0'">
+        class="  w-[632px] max-w-[632px]  flex 
+         bg-slate-800 h-[280px]  shadow-lg   shadow__  cursor-pointer " :class="routeName === '/cowcow' || routeName === '/all' ? 'my-3 mx-3' : 'my-0'">
         <div class="py-3 px-1 text-center relative   w-[120px] overflow-hidden   bg-[#350b2d] ">
             <p class="text-white font-medium text-3xl ">{{ data.roomName }}</p>
             <div class="mt-24">
@@ -11,7 +11,7 @@
         </div>
 
         <div class=" w-[512px] overflow-hidden h-full  ">
-            <table class="border-collapse  border-none table-fixed w-[512px] max-h-[280px]  " >
+            <table class="border-collapse  border-none table-fixed w-[512px] h-full " >
                 <thead class="text-center">
                     <tr class="text-center whitespace-nowrap">
                         <th class="w-8 "></th>
@@ -31,9 +31,9 @@
                         <td class="border border-slate-700  text-red-400  ">{{data?.detail.player1_double}}</td>
                         <td class="border border-slate-700  text-indigo-200">{{data.detail.player1_normal}}</td>
                         <td class="border border-slate-700  text-green-300">{{data.detail.player2_double}}</td>
-                        <td class="border border-slate-700  text-green-300">{{data.detail.player2_normal}}</td>
-                        <td class="border border-slate-700  text-green-300">{{data.detail.player3_double}}</td>
-                        <td class="border border-slate-700  text-green-300">{{data.detail.player3_normal}}</td>
+                        <td class="border border-slate-700  text-red-400">{{data.detail.player2_normal}}</td>
+                        <td class="border border-slate-700  text-indigo-200">{{data.detail.player3_double}}</td>
+                        <td class="border border-slate-700  text-indigo-200">{{data.detail.player3_normal}}</td>
                     </tr>
                     <tr class="h-10" >
                         <td class="border border-slate-700 py-0  my-0  flex flex-col " >
@@ -43,9 +43,9 @@
                         <td class="border border-slate-700  text-red-400  ">{{data.detail.player1_double * 0.97}}</td>
                         <td class="border border-slate-700  text-indigo-200">{{data.detail.player1_normal * 0.97}}</td>
                         <td class="border border-slate-700  text-green-300">{{data.detail.player2_double * 0.97}}</td>
-                        <td class="border border-slate-700  text-green-300">{{data.detail.player2_normal * 0.97}}</td>
-                        <td class="border border-slate-700  text-green-300">{{data.detail.player3_double * 0.97}}</td>
-                        <td class="border border-slate-700  text-green-300">{{data.detail.player3_normal * 0.97}}</td>
+                        <td class="border border-slate-700  text-red-400">{{data.detail.player2_normal * 0.97}}</td>
+                        <td class="border border-slate-700  text-indigo-200">{{data.detail.player3_double * 0.97}}</td>
+                        <td class="border border-slate-700  text-indigo-200">{{data.detail.player3_normal * 0.97}}</td>
                     </tr>
                     <tr class="h-10">
                       <td class="border border-slate-700 py-0  my-0  flex flex-col " >
@@ -55,9 +55,9 @@
                         <td class="border border-slate-700  text-red-400  ">{{data.detail.player1_double * 1.94}}</td>
                         <td class="border border-slate-700  text-indigo-200">{{data.detail.player1_normal * 0.97}}</td>
                         <td class="border border-slate-700  text-green-300">{{data.detail.player2_double * 1.94}}</td>
-                        <td class="border border-slate-700  text-green-300">{{data.detail.player2_normal * 0.97}}</td>
-                        <td class="border border-slate-700  text-green-300">{{data.detail.player3_double * 1.94}}</td>
-                        <td class="border border-slate-700  text-green-300">{{data.detail.player3_normal * 0.97}}</td>
+                        <td class="border border-slate-700  text-red-400">{{data.detail.player2_normal * 0.97}}</td>
+                        <td class="border border-slate-700  text-indigo-200">{{data.detail.player3_double * 1.94}}</td>
+                        <td class="border border-slate-700  text-indigo-200">{{data.detail.player3_normal * 0.97}}</td>
                     </tr>
                     <tr class="overflow-hidden  ">
                           <td class="border border-slate-700 py-0  my-0  flex flex-col max-h-20 " >
@@ -67,9 +67,9 @@
                         <td class="border border-slate-700  text-red-400  ">{{data.detail.player1_double * 2.91}}</td>
                         <td class="border border-slate-700  text-indigo-200">{{data.detail.player1_normal * 0.97}}</td>
                         <td class="border border-slate-700  text-green-300">{{data.detail.player2_double * 2.91}}</td>
-                        <td class="border border-slate-700  text-green-300">{{data.detail.player2_normal * 0.97}}</td>
-                        <td class="border border-slate-700  text-green-300">{{data.detail.player3_double * 2.91}}</td>
-                        <td class="border border-slate-700  text-green-300">{{data.detail.player3_normal * 0.97}}</td>
+                        <td class="border border-slate-700  text-red-400">{{data.detail.player2_normal * 0.97}}</td>
+                        <td class="border border-slate-700  text-indigo-200">{{data.detail.player3_double * 2.91}}</td>
+                        <td class="border border-slate-700  text-indigo-200">{{data.detail.player3_normal * 0.97}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -104,7 +104,7 @@ const router = useRouter()
     );
 
  const requstMore = () => {
-  router.push({path:'/nuDetail',query:{deskname:props.data.roomId}})
+  router.push({path:'/nuDetail',query:{cowRoomId:props.data.roomId}})
  }
 
 const greaterThan = (data) => {

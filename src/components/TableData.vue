@@ -12,7 +12,7 @@
                     <th class="border border-slate-600  font-bold">总押</th>
                     <th class="border border-slate-600  font-bold">当前余额</th>
                     <th class="border border-slate-600  font-bold">投注IP</th>
-                    <th class="border border-slate-600 text-red-400 font-bold w-16">终端</th>
+                    <th class="border border-slate-600 text-white font-bold w-16">终端</th>
                     <!-- <th class="border border-slate-600 text-indigo-200  font-bold">闲</th>
                 <th class="border border-slate-600 text-green-300 font-bold">和</th>
                 <th class="border border-slate-600 text-red-400 font-bold">庄对</th>
