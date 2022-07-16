@@ -77,7 +77,7 @@ const router = useRouter()
     );
 
  const requstMore = () => {
-  router.push({path:'/detail',query:{deskname:props.data.roomName}})
+  router.push({path:'/detail',query:{deskname:props.data.roomId}})
  }
 
 const greaterThan = (data) => {

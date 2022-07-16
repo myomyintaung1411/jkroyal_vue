@@ -1,15 +1,15 @@
 <template>
     <div class="w-full  flex flex-wrap ">
-        <singleDragonTiger v-for="data in lhData" :key="data.roomId" :data="data"></singleDragonTiger>
+        <singleCowCow v-for="data in cowcowData" :key="data.roomId" :data="data" ></singleCowCow>
         <!-- <singleBjl v-for="data in bjlData" :key="data.roomId" :data="data" ></singleBjl> -->
     </div>
 </template>
 
 <script setup>
-import singleDragonTiger from "@/components/singleDragonTiger.vue";
+import singleCowCow from "@/components/singleCowCow.vue";
 import pomelo from "@/socket/pomelo.js";
 import { ref, onMounted } from 'vue'
-const lhData = ref(null)
+const cowcowData = ref(null)
 
 function getDragonTiger(type) {
     console.log(type);
@@ -23,18 +23,17 @@ function getDragonTiger(type) {
     }
     console.log(sendStr + "sendStr");
     pomelo.send(sendStr, res => {
-        console.log(res,"res from dragontiger");
-        console.log(res.JsonData?.result + 'res of dragontiger ************') ;
+        console.log(res.JsonData?.result + 'res of cowcow ************') ;
         if (res.JsonData.result == 'ok' && res.JsonData?.data.length > 0) {
             console.log('resp ', res.JsonData.data)
-            lhData.value = res.JsonData.data
+            cowcowData.value = res.JsonData.data
             // console.log('bjlData data ', bjlData.value)
             console.log("rrrrrrrr");
         }
     })
 }
 onMounted(() => {
-    getDragonTiger('lh')
+    getDragonTiger('nn')
 })
 </script>
 

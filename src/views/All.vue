@@ -20,6 +20,7 @@ function getDeskLists(type) {
         }
     }
     pomelo.send(sendStr, res => {
+        // console.log('resp ', res)
         if (res.JsonData.result == 'ok' && res.JsonData.data.length > 0) {
             console.log('resp ', res.JsonData.data)
             bjlData.value = res.JsonData.data
@@ -28,6 +29,24 @@ function getDeskLists(type) {
         }
     })
 }
+
+   function  mergedData() {
+      const merged = bjlData.value.reduce(
+        (r, { rType, ...rest }) => {
+          const key = `${rType}`;
+          r[key] = r[key] || { rType, fixs: [] };
+          let newObj = { rType, ...rest };
+          r[key]["fixs"].push(newObj);
+          return r;
+        },
+        {}
+      );
+
+      const fixtureData = Object.values(merged);
+      console.log(fixtureData, "merged fixtures ************");
+      return fixtureData;
+    }
+
 onMounted(() => {
     getDeskLists('all')
 })

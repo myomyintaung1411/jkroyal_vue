@@ -28,7 +28,7 @@
                     <td class="border border-slate-600  text-white">{{ bet.roomName }}</td>
                     <td class="border border-slate-600  text-white">{{ bet.cc }}</td>
                     <td class="border border-slate-600  text-white">{{ bet.name }}</td>
-                    <td class="border border-slate-600  text-indigo-200">
+                    <td class="border border-slate-600  text-indigo-200 pb-2">
                         <div v-if="bet.rType === 'dx' || bet.rType === 'ssc'
                         || bet.rType === 'jsk3'
                         || bet.rType === 'bjcs' || bet.rType === 'tts' ||
@@ -61,7 +61,7 @@
                             </div>
                         </div>
 
-                        <div v-if="bet.rType === 'nn'" class="nn_info">
+                        <div v-if="bet.rType === 'nn'" class="nn_info ">
                             <!-- <span v-if="bet.niuniuResult" style="position: absolute; right: 5px; top: 5px;">
                 <el-popover
                   placement="top-start"
@@ -75,12 +75,11 @@
                   <el-button slot="reference" icon="el-icon-question" circle size="mini" />
                 </el-popover>
               </span> -->
-                            <div>
+                            <div class="">
                                 <span v-for="(n, index) in bet.niuniu" :key="index" class="nn_info_container">
                                     <p class="nn_info_title"
-                                        :style="n.indexOf('闲') != -1 ? 'color: blue' : 'color: red'">
+                                        :style="n.indexOf('闲') != -1 ? 'color: blue' : 'color: red'" >
                                         {{ n }}
-                                        <!-- <span style="color: #000">：</span> -->
                                     </p>
                                 </span>
                             </div>
@@ -137,4 +136,23 @@ function transGameStr(strGame) {
 </script>
 
 <style scoped>
+.nn_info{
+  display: flex;
+  justify-content: flex-start;
+}
+.nn_info_container{
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+.nn_info_title{
+  width: auto;
+  height: 20px;
+  padding: 2px;
+  margin: 3px;
+}
+.nn_info_bet_show{
+  width: auto; height: 20px; padding: 2px; margin: 3px;
+}
 </style>

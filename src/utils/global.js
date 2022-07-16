@@ -5,7 +5,6 @@ export default {
     },
 
     betInfoData(data, rType) {
-        console.log(data, rType + 'from global betInfoData ******');
         let nn = data.split("$")
         nn.pop();
         var betnn = [];

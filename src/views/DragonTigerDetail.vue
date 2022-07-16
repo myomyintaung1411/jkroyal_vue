@@ -1,9 +1,9 @@
 <template>
     <div class="  bg-slate-700 w-full overflow-hidden  ">
         <div v-if="data" class="w-full flex  ">
-            <singleBjl  :data="data"></singleBjl>
+            <singleDragonTiger :data="data" ></singleDragonTiger>
             <div  class=" scroll_main bg-slate-800 overflow-y-hidden relative">
-                <div @click="moveData()" ref="scroll_road"
+                <div @click="moveData()"
                     class="dl-section r-section text-white whitespace-nowrap   h-full overflow-y-hidden  ">
                     <!-- {{dl.lst}} -->
                     <div class="col c2  h-52   text-center  " v-for="(col, iCol) in dl.lst" :key="iCol">
@@ -24,7 +24,7 @@
 import { ref, onMounted, computed,onBeforeUnmount } from 'vue'
 import pomelo from "@/socket/pomelo.js";
 import { useRoute } from 'vue-router';
-import singleBjl from "../components/singleBjl.vue";
+import singleDragonTiger from "../components/singleDragonTiger.vue";
 import { useStore } from "vuex";
 import global from '@/utils/global';
 import TableData from '@/components/TableData.vue';
@@ -34,10 +34,10 @@ const store = useStore()
 const state = ref('')
 // callMoreData()
 const data = ref(null)
-const scroll_road = ref(null)
 const betsData = ref([])
 const roadData = ref("")
 const timing = ref(null)
+
 const statistic = ref({
     banker: 0,
     player: 0,
@@ -74,8 +74,6 @@ const dl = ref(
         stat: {}
     },
 )
-const bjl_data = computed(() => store.getters["app/BJL_Detail"]);
-
 function __dataFormat(rData) {
     var data = rData
     var betOrderInquireForm = { tableData: [], totalItemsNum: 0 }
@@ -113,7 +111,7 @@ function callMoreData() {
     const sendStr = {
         router: 'getDeskLists',
         JsonData: {
-            type: 'bjl',
+            type: 'lh',
             findname: '',
             deskname: route.query.deskname
         }
@@ -125,7 +123,6 @@ function callMoreData() {
         roadData.value = res.JsonData.data[0].road
         _roadDataModifed(res.JsonData.data[0].road)
 
-
         //betsData.value = res.JsonData.bets
     })
 }
@@ -133,9 +130,7 @@ callMoreData()
 
 
 function requestDataEveryFiveSec() {
-    // if(roadData.value) {
         timing.value = setInterval(() => {
-            // _roadDataModifed(roadData.value)
             initData()
             callMoreData()
             console.log("5 log second");
@@ -146,42 +141,23 @@ function requestDataEveryFiveSec() {
 onBeforeUnmount(() => {
     clearInterval(timing.value)
 })
-
-function actionScroll (event) {
-  const scroll = window.scrollX; 
-  console.log(scroll , "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%") // shows pixel position of window scroll
-  // You can also perform any action while using this method
-}
-
-function test(){
-       window.addEventListener('scroll', () => {
-  const scrollPosition = scroll_road.value.scrollLeft;
-  console.log(scrollPosition + "scrollPostion") 
-// We saved the scroll position and check it with console log for any further actions 
-}, false)
-}
-
 onMounted(() => {
     store.commit("app/TABLE_BETDATA", []);
     initData()
     requestDataEveryFiveSec()
-     window.addEventListener('scroll', actionScroll(screenX));
-
-
 })
 
 function _roadDataModifed(data) {
-    //console.log(data + 'data **********');
     let nn = data?.split("^")
-    //console.log(nn, "nnnn");
-    // nn.pop();
+     nn.pop()
     var splitData = [];
     for (let i = 0; i < nn?.length; i++) {
-        splitData.push(nn[i].split("-")[0])
+        splitData.push(nn[i].substring("0")[0])
     }
     splitData.forEach((split, i) => {
         addOne(split)
     })
+    console.log(splitData, "splitData length ************");
 }
 
 //   function TwoDimensional(arr, size) 
@@ -203,83 +179,85 @@ function addOne(item) {
     }
 
     let zpIdx = 0
-    if (result == 'a') {
+    if (result == 'a') { // dragon
         zpIdx = 100
         statistic.value.banker++
-    } else if (result == 'e') {
+    } else if (result == 'c') { //tiger
         zpIdx = 200
         statistic.value.player++
-    } else if (result == 'i') {
+    } else if (result == 'b') { //tie
         zpIdx = 300
         statistic.value.tie++
     }
-    if (result == 'b') {
-        zpIdx = 100
-        zpIdx += 1
-        statistic.value.banker++
-        statistic.value.pPair++
-    }
-    if (result == 'c') {
-        zpIdx = 100
-        zpIdx += 10
-        statistic.value.banker++
-        statistic.value.bPair++
-    }
-    if (result == 'd') {
-        zpIdx = 100
-        zpIdx += 10
-        zpIdx += 1
-        statistic.value.banker++
-        statistic.value.bPair++
-        statistic.value.pPair++
-    }
+    // if (result == 'b') {
+    //     zpIdx = 100
+    //     zpIdx += 1
+    //     statistic.value.banker++
+    //     statistic.value.pPair++
+    // }
+    // if (result == 'c') {
+    //     zpIdx = 100
+    //     zpIdx += 10
+    //     statistic.value.banker++
+    //     statistic.value.bPair++
+    // }
+    // if (result == 'd') {
+    //     zpIdx = 100
+    //     zpIdx += 10
+    //     zpIdx += 1
+    //     statistic.value.banker++
+    //     statistic.value.bPair++
+    //     statistic.value.pPair++
+    // }
 
-    if (result == 'f') {
-        zpIdx = 200
-        zpIdx += 1
-        statistic.value.player++
-        statistic.value.pPair++
-    }
-    if (result == 'g') {
-        zpIdx = 200
-        zpIdx += 10
-        statistic.value.player++
-        statistic.value.bPair++
-    }
-    if (result == 'h') {
-        zpIdx = 200
-        zpIdx += 1
-        zpIdx += 10
-        statistic.value.player++
-        statistic.value.pPair++
-        statistic.value.bPair++
-    }
-    if (result == 'j') {
-        zpIdx = 300
-        zpIdx += 10
-        statistic.value.tie++
-        statistic.value.pPair++
-    }
-    if (result == 'k') {
-        zpIdx = 300
-        zpIdx += 1
-        statistic.value.tie++
-        statistic.value.bPair++
-    }
-    if (result == 'l') {
-        zpIdx = 300
-        zpIdx += 10
-        zpIdx += 1
-        statistic.value.tie++
-        statistic.value.bPair++
-        statistic.value.pPair++
-    }
+    // if (result == 'f') {
+    //     zpIdx = 200
+    //     zpIdx += 1
+    //     statistic.value.player++
+    //     statistic.value.pPair++
+    // }
+    // if (result == 'g') {
+    //     zpIdx = 200
+    //     zpIdx += 10
+    //     statistic.value.player++
+    //     statistic.value.bPair++
+    // }
+    // if (result == 'h') {
+    //     zpIdx = 200
+    //     zpIdx += 1
+    //     zpIdx += 10
+    //     statistic.value.player++
+    //     statistic.value.pPair++
+    //     statistic.value.bPair++
+    // }
+    // if (result == 'j') {
+    //     zpIdx = 300
+    //     zpIdx += 10
+    //     statistic.value.tie++
+    //     statistic.value.pPair++
+    // }
+    // if (result == 'k') {
+    //     zpIdx = 300
+    //     zpIdx += 1
+    //     statistic.value.tie++
+    //     statistic.value.bPair++
+    // }
+    // if (result == 'l') {
+    //     zpIdx = 300
+    //     zpIdx += 10
+    //     zpIdx += 1
+    //     statistic.value.tie++
+    //     statistic.value.bPair++
+    //     statistic.value.pPair++
+    // }
 
     zp.value.lst[zp.value.col][zp.value.row] = zpIdx
     zp.value.lst, zp.value.col, zp.value.lst[zp.value.col]
+    console.log("updating ....... addOne with the this.$set() method");
     if (++zp.value.row >= 6) {
         zp.value.col++
         zp.value.row = 0
+        console.log(zp.value, "this.zp.row >= 6 1229 ************ of zp list");
     }
 
     if (zp.value.col >= 20 - 2) {
@@ -288,9 +266,11 @@ function addOne(item) {
         zp.value.col--
     }
     let dlIdx = Math.floor(zpIdx / 100)
+    console.log("dlidx inside of addOne method ***** = " + dlIdx);
     addOneDl(dlIdx)
 }
 function addOneDl(dlIdx, ask = false) {
+    console.log(dlIdx + "  dlidx index : LINE 1413 ********* " + ask);
     let param = {}
     let pIdx = Math.floor(dl.value.lst[dl.value.pc][dl.value.pr] / 100)
     //console.log(pIdx + "  PIDX OF 1416:******************* ");
@@ -426,8 +406,11 @@ function addOneDl(dlIdx, ask = false) {
 }
 
 function parseChangLong(lst, col, row, cl) {
+    console.log(lst, col, row, cl, "parseChangLong ************* LINE 1366");
     let define = Math.floor(lst[col][row] / 100)
+    console.log("define *********: " + define);
     if (define === 0) {
+        console.log(" if (define === 0) define *********: is zero " + define);
         return { num: -1, col: 0, row: 0 }
     }
     let num = 1
@@ -441,6 +424,7 @@ function parseChangLong(lst, col, row, cl) {
             }
             num++
         }
+        console.log(iRow, iCol, " inside of cl == 0 *********** parseChangLong line 1389");  //
         while (++iCol) {
             if (Math.floor(lst[iCol][iRow]) !== define) {
                 iCol--
@@ -459,6 +443,7 @@ function parseChangLong(lst, col, row, cl) {
                 }
                 num++
             }
+            console.log(iRow, iCol, " inside of cl == 2 *********** parseChangLong line 1389");  //
         }
         while (--iRow >= 0) num++
         iRow++
@@ -481,7 +466,7 @@ const initData = () => {
     dl.value.lst = []
     dl.value.pr = dl.value.pc = dl.value.nc = 0
     dl.value.cl = false
-    dl.value.clNum = 0
+    // dl.value.clNum = 0
     dl.value.stat = {}
     dl.value.pointCol = 0
     for (let i = 0; i < colsNumUnit * 2; i++) {

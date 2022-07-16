@@ -25,7 +25,7 @@ function conn(cb) {
   p_server.init(
     {
       //host: process.env.NODE_ENV == 'development' ? process.env.VUE_APP_DEV_POMELO : process.env.VUE_APP_PRO_POMELO,
-      host: '192.168.33.3',
+      host: '192.168.1.10',
       port: 8014,
       log: true
     },
@@ -210,6 +210,7 @@ function chkHeartBeat(server) {
   // console.log("chkHeartBeat msg",msg);
   var route = 'agent.agentHandler.chkHardBean'
   server.request(route, msg, function (data) {
+    // console.log(data,"data");
     if (data.code == '07') {
       nHeartBeat = 0
     }

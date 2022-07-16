@@ -30,10 +30,28 @@ const routes = [
         meta: { title: 'DragonTiger' }
       },
       {
+        path: '/cowcow',
+        name: 'CowCow',
+        component: () => import('./views/CowCow.vue'),
+        meta: { title: 'CowCow' }
+      },
+      {
         path: '/detail',
         name: 'Detail',
         component: () => import('./views/Detail.vue'),
         meta: { title: 'Detail' }
+      },
+      {
+        path: '/dragonDetail',
+        name: 'DragonTigerDetail',
+        component: () => import('./views/DragonTigerDetail.vue'),
+        meta: { title: 'DragonTigerDetail' }
+      },
+      {
+        path: '/nuDetail',
+        name: 'CowCowDetail',
+        component: () => import('./views/CowCowDetail.vue'),
+        meta: { title: 'CowCowDetail' }
       },
     ]
   },

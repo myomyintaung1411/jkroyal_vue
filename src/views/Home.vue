@@ -22,7 +22,7 @@
           <div class="w-full py-3 px-3 rounded bg-slate-50 text-black 
           hover:text-white hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
           hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 1 ? '__activeColor' : ''">
-            <p class="text-2xl tracking-wide font-medium">Bjl</p>
+            <p class="text-2xl tracking-wide font-medium">百家乐</p>
           </div>
         </div>
         </div>
@@ -31,7 +31,16 @@
           <div class="w-full py-3 px-3 rounded bg-slate-50 text-black 
           hover:text-white hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
           hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 2 ? '__activeColor' : ''">
-            <p class="text-2xl tracking-wide font-medium">DragonTiger</p>
+            <p class="text-2xl tracking-wide font-medium">龙虎</p>
+          </div>
+        </div>
+        </div>
+        <div class="py-2 w-full" @click="clickData(3)" >
+        <div class=" cursor-pointer">
+          <div class="w-full py-3 px-3 rounded bg-slate-50 text-black 
+          hover:text-white hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
+          hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 3 ? '__activeColor' : ''">
+            <p class="text-2xl tracking-wide font-medium">牛牛</p>
           </div>
         </div>
         </div>
@@ -84,7 +93,9 @@ const clickData = (n) =>{
       break;
     case 2:
       router.push('/dgtiger')
-     // getBjlLists('bjl')
+      break;
+    case 3:
+      router.push('/cowcow')
       break;
   
     default:

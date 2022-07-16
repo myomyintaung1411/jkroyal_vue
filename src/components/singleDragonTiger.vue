@@ -1,6 +1,5 @@
 <template>
-  
-    <!-- <div v-if="data" @click="requstMore()"
+    <div  @click="requstMore()"
         class=" overflow-hidden w-[500px] max-w-[500px] min-w-[500px] flex 
          bg-slate-800 h-52  shadow-lg   shadow__  cursor-pointer " :class="routeName === '/dgtiger' ? 'my-3 mx-5' : 'my-0'">
         <div class="py-3 px-1 text-center relative   w-[150px] overflow-hidden   bg-[#350b2d] ">
@@ -16,55 +15,8 @@
                 <thead class="text-center ">
                     <tr class="text-center">
                         <th class="w-8"></th>
-                        <th class="border border-slate-600 text-red-400 font-bold">庄</th>
-                        <th class="border border-slate-600 text-indigo-200  font-bold">闲</th>
-                        <th class="border border-slate-600 text-green-300 font-bold">和</th>
-                        <th class="border border-slate-600 text-red-400 font-bold">庄对</th>
-                        <th class="border border-slate-600 text-indigo-200 font-bold">闲对</th>
-                    </tr>
-                </thead>
-                <tbody class="text-center  overflow-hidden break-all  ">
-                    <tr>
-                        <td class="border border-slate-700 text-xl font-bold  "
-                            style="writing-mode: vertical-rl;text-orientation: upright;">投注</td>
-                        <td class="border border-slate-700  text-red-400  ">{{ data.detail.banker }}</td>
-                        <td class="border border-slate-700  text-indigo-200">{{ data.detail.player }}</td>
-                        <td class="border border-slate-700  text-green-300">{{ data.detail.tie }}</td>
-                        <td class="border border-slate-700  text-red-400">{{ data.detail.b_pair }}</td>
-                        <td class="border border-slate-700  text-indigo-200">{{ data.detail.p_pair }}</td>
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 text-xl font-bold "
-                            style="writing-mode: vertical-rl;text-orientation: upright; ">赔彩</td>
-                        <td class="border border-slate-700  text-red-400">{{ seperatedComma(data, 'banker') }}</td>
-                        <td class="border border-slate-700  text-indigo-200">{{ seperatedComma(data, 'player') }}</td>
-                        <td class="border border-slate-700  text-green-300">{{ seperatedComma(data, 'tie') }}</td>
-                        <td class="border border-slate-700  text-red-400">{{ seperatedComma(data, 'bpair') }}</td>
-                        <td class="border border-slate-700  text-indigo-200">{{ seperatedComma(data, 'ppair') }}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="w-full h-[15%] text-center text-2xl">庄闲差 : {{ greaterThan(data.detail) }}</div>
-        </div>
-    </div> -->
-    <div  @click="requstMore()"
-        class=" overflow-hidden w-[500px] max-w-[500px] min-w-[500px] flex 
-         bg-slate-800 h-52  shadow-lg   shadow__  cursor-pointer " :class="routeName === '/dgtiger' ? 'my-3 mx-5' : 'my-0'">
-        <div class="py-3 px-1 text-center relative   w-[150px] overflow-hidden   bg-[#350b2d] ">
-            <p class="text-white font-medium text-3xl ">VIP</p>
-            <div class="mt-24">
-                <h1 class="text-lg font-bold tracking-wide text-white text-center ">局口:0</h1>
-                <h1 class="text-lg font-bold tracking-wide text-white text-center ">限红:0</h1>
-            </div>
-        </div>
-
-        <div class=" w-[350px] overflow-hidden ">
-            <table class="border-collapse  border-none table-fixed w-[350px] overflow-hidden h-[85%] ">
-                <thead class="text-center ">
-                    <tr class="text-center">
-                        <th class="w-8"></th>
-                        <th class="border border-slate-600 text-red-400 font-bold">庄</th>
-                        <th class="border border-slate-600 text-indigo-200  font-bold">闲</th>
+                        <th class="border border-slate-600 text-red-400 font-bold">龙</th>
+                        <th class="border border-slate-600 text-indigo-200  font-bold">虎</th>
                         <th class="border border-slate-600 text-green-300 font-bold">和</th>
                         <!-- <th class="border border-slate-600 text-red-400 font-bold">庄对</th>
                         <th class="border border-slate-600 text-indigo-200 font-bold">闲对</th> -->
@@ -74,20 +26,20 @@
                     <tr>
                         <td class="border border-slate-700 text-xl font-bold  "
                             style="writing-mode: vertical-rl;text-orientation: upright;">投注</td>
-                        <td class="border border-slate-700  text-red-400  ">0</td>
-                        <td class="border border-slate-700  text-indigo-200">0</td>
-                        <td class="border border-slate-700  text-green-300">0</td>
+                        <td class="border border-slate-700  text-red-400  ">{{ data.detail.dragon }}</td>
+                        <td class="border border-slate-700  text-indigo-200">{{ data.detail.tiger }}</td>
+                        <td class="border border-slate-700  text-green-300">{{ data.detail.tie }}</td>
                     </tr>
                     <tr>
                         <td class="border border-slate-700 text-xl font-bold "
                             style="writing-mode: vertical-rl;text-orientation: upright; ">赔彩</td>
-                        <td class="border border-slate-700  text-red-400">0</td>
-                        <td class="border border-slate-700  text-indigo-200">0</td>
-                        <td class="border border-slate-700  text-green-300">0</td>
+                        <td class="border border-slate-700  text-red-400">{{ seperatedComma(data, 'dragon') }}</td>
+                        <td class="border border-slate-700  text-indigo-200">{{ seperatedComma(data, 'tiger') }}</td>
+                        <td class="border border-slate-700  text-green-300">{{ seperatedComma(data, 'tie') }}</td>
                     </tr>
                 </tbody>
             </table>
-            <div class="w-full h-[15%] text-center text-2xl">庄闲差 : 2022</div>
+            <div class="w-full h-[15%] text-center text-2xl">龙虎差 : {{ greaterThan(data.detail) }}</div>
         </div>
     </div>
 </template>
@@ -118,34 +70,34 @@ const router = useRouter()
     );
 
  const requstMore = () => {
-  router.push({path:'/detail',query:{deskname:props.data.roomName}})
+  router.push({path:'/dragonDetail',query:{deskname:props.data.roomId}})
  }
 
 const greaterThan = (data) => {
-  if(data.banker > data.player) {
-    return data.banker - data.player
+  if(data.dragon > data.tiger) {
+    return data.dragon - data.tiger
   } else{
-    return data.player - data.banker
+    return data.tiger - data.dragon
   }
 }
  const seperatedComma = (data,name) => {
   var arraylist = data.bl.split(",") ;
   switch (name) {
-    case 'banker':
-     arraylist = arraylist[2] * data.detail.banker
+    case 'dragon':
+     arraylist = arraylist[2] * data.detail.dragon
       break;
-    case 'player':
-     arraylist = arraylist[0] * data.detail.player
+    case 'tiger':
+     arraylist = arraylist[0] * data.detail.tiger
       break;
     case 'tie':
      arraylist = arraylist[1] * data.detail.tie
       break;
-    case 'bpair':
-     arraylist = arraylist[1] * data.detail.tie
-      break;
-    case 'ppair':
-     arraylist = arraylist[1] * data.detail.tie
-      break;
+    // case 'bpair':
+    //  arraylist = arraylist[1] * data.detail.tie
+    //   break;
+    // case 'ppair':
+    //  arraylist = arraylist[1] * data.detail.tie
+    //   break;
   
     default:
       break;
