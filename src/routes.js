@@ -18,6 +18,12 @@ const routes = [
         meta: { title: 'OnlineUser' }
       },
       {
+        path: '/realtimememb',
+        name: 'RealTimeMember',
+        component: () => import('./views/RealTimeMemb.vue'),
+        meta: { title: 'RealTimeMember' }
+      },
+      {
         path: '/all',
         name: 'All',
         component: () => import('./views/All.vue'),

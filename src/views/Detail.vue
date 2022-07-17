@@ -17,21 +17,38 @@
             </div>
         </div>
      <TableData></TableData>
+      <div v-if="betsData?.length > 0" class="flex items-center justify-center">
+            <Paginate v-model="pagination.currentPage" :page-count="Math.ceil(pagination.total / pagination.pageSize)"
+                :page-range="3" :margin-pages="1" :click-handler="clickCallback" :prev-text="'Prev'" :next-text="'Next'"
+                :container-class="'pagination'" :hide-prev-next="true" :page-class="'page-item'" :first-last-button	="true"
+                class="flex items-center space-x-4" :no-li-surround="true" :page-link-class="'page-link'"
+                :active-class="'active-class'">
+
+            </Paginate>
+     </div>
    </div>
 </template>
 
 <script setup>
-import { ref, onMounted, computed,onBeforeUnmount } from 'vue'
+import { ref, onMounted, computed,onBeforeUnmount,reactive } from 'vue'
 import pomelo from "@/socket/pomelo.js";
 import { useRoute } from 'vue-router';
 import singleBjl from "../components/singleBjl.vue";
 import { useStore } from "vuex";
 import global from '@/utils/global';
+import Paginate from "vuejs-paginate-next";
 import TableData from '@/components/TableData.vue';
 const route = useRoute();
 const store = useStore()
 //
 const state = ref('')
+
+const pagination = reactive({
+  pageSize: 5,
+  currentPage: 1,
+  total:0,
+});
+
 // callMoreData()
 const data = ref(null)
 const scroll_road = ref(null)
@@ -86,7 +103,7 @@ function __dataFormat(rData) {
         tableData[i].name = data[i].name
         tableData[i].rType = data[i].rType
         tableData[i].gameType = data[i].rType
-        tableData[i].time = data[i].time
+        tableData[i].time =  global.transTime(data[i].time)
         tableData[i].roomName = data[i].roomName
         tableData[i].cc = data[i].cc
         tableData[i].memberName = data[i].name
@@ -103,10 +120,16 @@ function __dataFormat(rData) {
         })
         store.commit("app/TABLE_BETDATA", tableData);
         betsData.value = tableData
+       
         // tableData[i].tablePara = getTablePara(
         //     data[i].rType, tableData[i].betOrderInfo)
     }   // mapIP(betOrderInquireForm.tableData)  
     //betOrderInquireForm.totalItemsNum = rData.totalItem
+}
+
+const clickCallback = (pageNum) =>{
+    console.log(pageNum , "from click callback");
+    callMoreData()
 }
 
 function callMoreData() {
@@ -115,17 +138,21 @@ function callMoreData() {
         JsonData: {
             type: 'bjl',
             findname: '',
-            deskname: route.query.deskname
+            deskname: route.query.deskname,
+            pageSize: pagination.pageSize,
+            currentPage: pagination.currentPage
         }
     }
+    console.log(sendStr , "resStr ***********");
     pomelo.send(sendStr, res => {
         console.log('resp ', res)
         data.value = res.JsonData.data[0]
         __dataFormat(res.JsonData.bets)
-        roadData.value = res.JsonData.data[0].road
-        _roadDataModifed(res.JsonData.data[0].road)
+        roadData.value = res.JsonData?.data[0]?.road
+        _roadDataModifed(res.JsonData?.data[0]?.road)
 
-
+        pagination.total = res.JsonData?.totalItem //pagination total
+        
         //betsData.value = res.JsonData.bets
     })
 }
@@ -147,27 +174,17 @@ onBeforeUnmount(() => {
     clearInterval(timing.value)
 })
 
-function actionScroll (event) {
-  const scroll = window.scrollX; 
-  console.log(scroll , "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%") // shows pixel position of window scroll
-  // You can also perform any action while using this method
-}
+// function actionScroll (event) {
+//   const scroll = window.scrollX; 
+//   console.log(scroll , "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%") // shows pixel position of window scroll
+//   // You can also perform any action while using this method
+// }
 
-function test(){
-       window.addEventListener('scroll', () => {
-  const scrollPosition = scroll_road.value.scrollLeft;
-  console.log(scrollPosition + "scrollPostion") 
-// We saved the scroll position and check it with console log for any further actions 
-}, false)
-}
 
 onMounted(() => {
     store.commit("app/TABLE_BETDATA", []);
     initData()
     requestDataEveryFiveSec()
-     window.addEventListener('scroll', actionScroll(screenX));
-
-
 })
 
 function _roadDataModifed(data) {
@@ -585,4 +602,19 @@ function moveData() {
 .__table {
     overflow: scroll !important;
 }
+</style>
+<style>
+.page-item  {
+    @apply  px-4 py-2 bg-blue-500
+  }
+  .page-link{
+    /* background: red !important; */
+    @apply bg-blue-500 px-4 py-2
+  }
+  .active-class{
+    display :inline-block;
+    color:#fff;
+    @apply bg-yellow-600 !important;
+    
+  }
 </style>

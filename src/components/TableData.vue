@@ -1,5 +1,5 @@
 <template>
-    <div class=" mt-2   table_wrap w-full min-w-[1350px] touch-none">
+    <div class=" mt-2   table_wrap w-full min-w-[1350px] touch-none ">
         <table class="border-collapse table-fixed   border-none w-full  __table ">
             <thead class="text-center border-b bg-slate-500  sticky top-0 h-full py-2">
                 <tr class="text-center ">
@@ -154,5 +154,8 @@ function transGameStr(strGame) {
 }
 .nn_info_bet_show{
   width: auto; height: 20px; padding: 2px; margin: 3px;
+}
+.table_wrap{
+    height: calc(100vh - 400px);
 }
 </style>

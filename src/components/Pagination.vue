@@ -1,18 +1,17 @@
-< template >
-<div  @ click= "go" >
+<template>
+<div @click="go">
   <!-- previous page-->
-  <button  class= "prev"
+  <button class= "prev"
           go= "-1"
           :disabled= "currentNo === 1"
-          :class= " {disabled: currentNo === 1}">Previous </button>
+          :class= "{disabled: currentNo === 1}">Previous </button>
   <!-- first page-->
-  <button  v-show= "startEnd.start >= 2"
-          :go= "1" > 1 </button>
+  <button  v-show= "startEnd.start >= 2" :go="1">1  </button>
   <!-- ellipsis-->
   <span  class= "elli"
         v-show= "startEnd.start >= 3" > ... </span>
   <!-- Intermediate consecutive page numbers-->
-  <button  v-for= "(item, index) in startEnd.end"
+  <button v-for= "(item,index) in startEnd.end"
           :key= "index"
           :go= "item"
           v-show= "item >= startEnd.start"
@@ -25,17 +24,17 @@
           :go= "totalPages" > {{ totalPages }} </button>
   <!-- next page-->
   <button  class= "next"
-          :disabled= "currentNo === totalPages"
+          :disabled = "currentNo === totalPages"
           :class= " {disabled: currentNo === totalPages}"
           go="+1">Next </button>
   <span> Current page number: {{ currentNo }} </span>
 </div>
 </template >
 
-< script  setup >
-import  {  computed , onMounted ,  ref  }  from  ' vue '
+<script setup>
+import  { computed ,onMounted ,ref  }  from 'vue'
 
-const  props  =  defineProps ({
+const  props  =  defineProps({
   // The total number
   totalItems :  Number ,
   // number of pages per page
@@ -48,7 +47,7 @@ const  props  =  defineProps ({
 })
 
 // total pages
-const  totalPages  =  computed (()  =>  Math.ceil ( props.totalItems  /  props.pageItems ))
+const  totalPages  =  computed (()  =>  Math.ceil (props.totalItems / props.pageItems ))
 
 // current page number
 let  currentNo  =  ref (( totalPages.value  >  0 )  ?  1  :  0 )
@@ -107,7 +106,7 @@ function  go ( e )  {
 
 </script>
 
-< style scoped >
+<style scoped >
 
 button {
 	 width: 30px;

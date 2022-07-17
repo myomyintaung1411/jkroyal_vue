@@ -48,8 +48,17 @@
         <div class=" cursor-pointer">
           <div class="w-full py-3 px-3 rounded bg-slate-50 text-black 
           hover:text-white hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
-          hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 3 ? '__activeColor' : ''">
-            <p class="text-2xl tracking-wide font-medium">牛牛</p>
+          hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 4 ? '__activeColor' : ''">
+            <p class="text-2xl tracking-wide font-medium">OnlineUser</p>
+          </div>
+        </div>
+        </div>
+        <div class="py-2 w-full" @click="clickData(5)" >
+        <div class=" cursor-pointer">
+          <div class="w-full py-3 px-3 rounded bg-slate-50 text-black 
+          hover:text-white hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
+          hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 5 ? '__activeColor' : ''">
+            <p class="text-2xl tracking-wide font-medium">RealTime</p>
           </div>
         </div>
         </div>
@@ -108,6 +117,9 @@ const clickData = (n) =>{
       break;
     case 4:
       router.push('/onlineuser')
+      break;
+    case 5:
+      router.push('/realtimememb')
       break;
   
     default:
