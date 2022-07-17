@@ -44,6 +44,15 @@
           </div>
         </div>
         </div>
+        <div class="py-2 w-full" @click="clickData(4)" >
+        <div class=" cursor-pointer">
+          <div class="w-full py-3 px-3 rounded bg-slate-50 text-black 
+          hover:text-white hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
+          hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 3 ? '__activeColor' : ''">
+            <p class="text-2xl tracking-wide font-medium">牛牛</p>
+          </div>
+        </div>
+        </div>
         <div class="absolute bottom-0   m-auto left-0 right-0 cursor-pointer">
           <div class="p-3 rounded bg-slate-50 flex justify-center items-center">
             <LogoutIcon class="w-10 h-10 text-[#350b2d]"></LogoutIcon>
@@ -96,6 +105,9 @@ const clickData = (n) =>{
       break;
     case 3:
       router.push('/cowcow')
+      break;
+    case 4:
+      router.push('/onlineuser')
       break;
   
     default:

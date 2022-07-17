@@ -7,15 +7,15 @@
         </div> -->
     </div>
     <div class="w-full">
-        <div class="py-2 bg-[#350B2D] px-3 text-xl">Bjl</div>
+        <div class="py-2 bg-[#350B2D] px-3 mx-5 text-xl">Bjl</div>
         <div class="w-full overflow-x-scroll whitespace-nowrap  flex">
            <singleBjl v-for="data in bjlData?.fixs" :key="data.roomId" :data="data"></singleBjl>
         </div>
-        <div class="py-2 bg-[#350B2D] px-3 text-xl my-3">DragonTiger</div>
+        <div class="py-2 bg-[#350B2D] px-3 mx-5 text-xl my-3">DragonTiger</div>
         <div class="w-full overflow-x-scroll whitespace-nowrap  flex">
            <singleDragonTiger v-for="data in dragonTiger?.fixs" :key="data.roomId" :data="data"></singleDragonTiger>
         </div>
-        <div class="py-2 bg-[#350B2D] px-3 text-xl my-3">CowCow</div>
+        <div class="py-2 bg-[#350B2D] px-3 mx-5 text-xl my-3">CowCow</div>
         <div class="w-full overflow-x-scroll   flex">
           <singleCowCow v-for="data in cowcowData?.fixs" :key="data.roomId" :data="data" ></singleCowCow>
         </div>

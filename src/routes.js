@@ -12,6 +12,12 @@ const routes = [
     redirect:'/all',
     children: [
       {
+        path: '/onlineuser',
+        name: 'OnlineUser',
+        component: () => import('./views/OnlineUser.vue'),
+        meta: { title: 'OnlineUser' }
+      },
+      {
         path: '/all',
         name: 'All',
         component: () => import('./views/All.vue'),
