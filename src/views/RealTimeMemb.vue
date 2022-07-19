@@ -56,7 +56,7 @@
     </div>
   </div> -->
     <div class="w-full min-w-[1200px] max-w-full   ">
-        <div class="py-3 flex items-center bg-red-500 px-3 space-x-3">
+        <div class="py-3 flex items-center bg-[#350b2d] px-3 space-x-3">
             <span class="px-2">OnlineUser</span>
             <input v-model="account" id="name" type="name" autocomplete="off" name="name" class="
       text-sm placeholder-gray-500 text-gray-500  px-2 
@@ -220,7 +220,7 @@ const interval = ref(null)
 const onlineMemb = ref(null)
 
 const pagination = reactive({
-  pageSize: 1,
+  pageSize: 10,
   currentPage: 1,
   total:0,
 });

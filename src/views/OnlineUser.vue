@@ -56,7 +56,7 @@
     </div>
   </div>
   <div class="w-full min-w-[1200px] max-w-full   ">
-    <div class="py-3 flex items-center bg-red-500 px-3 space-x-3">
+    <div class="py-3 flex items-center bg-[#350b2d] px-3 space-x-3">
       <span class="px-2">OnlineUser</span>
       <input v-model="searchUser" id="name" type="name" autocomplete="off" name="name" class="text-sm placeholder-gray-500 text-gray-500  px-2
         w-[100px] py-2 focus:outline-none outline-none" placeholder="请输入账" />
@@ -192,7 +192,7 @@ const people = reactive([
 const terminalName = ref(people[0])
 const searchUser = ref('')
 const pagination = reactive({
-  pageSize: 1,
+  pageSize: 10,
   currentPage: 1,
   total:0,
 });
@@ -235,6 +235,11 @@ const clickCallback = (pageNum) =>{
   getOnlineMemberInfo()
  }
 
+ function transTime (times) {
+  moment.suppressDeprecationWarnings = true;
+  return moment(times).format('YYYY-MM-DD HH:mm:ss')
+}
+
    function getOnlineMemberInfo() {
       const sendStr = {
         router: 'getOnlineMemberInfo',
@@ -260,7 +265,7 @@ const clickCallback = (pageNum) =>{
           tableData[i].username = data[i].username
           tableData[i].ye = data[i].ye
           tableData[i].terminal = data[i].terminal
-          tableData[i].loginTime = moment(data[i].loginTime).format("YYYY-MM-DD HH:mm:ss")
+          tableData[i].loginTime = transTime(data[i].loginTime)
           tableData[i].reference_name = data[i].reference_name
         }
         //mapIP(onlineMemberForm.tableData)

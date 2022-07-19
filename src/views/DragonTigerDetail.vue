@@ -17,6 +17,15 @@
             </div>
         </div>
      <TableData></TableData>
+              <div v-if="betsData?.length > 0" class="flex items-center justify-center">
+            <Paginate v-model="pagination.currentPage" :page-count="Math.ceil(pagination.total / pagination.pageSize)"
+                :page-range="3" :margin-pages="1" :click-handler="clickCallback" :prev-text="'Prev'" :next-text="'Next'"
+                :container-class="'pagination'" :hide-prev-next="true" :page-class="'page-item'" :first-last-button	="true"
+                class="flex items-center space-x-4" :no-li-surround="true" :page-link-class="'page-link'"
+                :active-class="'active-class'">
+
+            </Paginate>
+     </div>
    </div>
 </template>
 
@@ -28,6 +37,7 @@ import singleDragonTiger from "../components/singleDragonTiger.vue";
 import { useStore } from "vuex";
 import global from '@/utils/global';
 import TableData from '@/components/TableData.vue';
+import Paginate from "vuejs-paginate-next";
 const route = useRoute();
 const store = useStore()
 //
@@ -37,7 +47,11 @@ const data = ref(null)
 const betsData = ref([])
 const roadData = ref("")
 const timing = ref(null)
-
+const pagination = reactive({
+  pageSize: 5,
+  currentPage: 1,
+  total:0,
+});
 const statistic = ref({
     banker: 0,
     player: 0,
@@ -106,6 +120,10 @@ function __dataFormat(rData) {
     }   // mapIP(betOrderInquireForm.tableData)  
     //betOrderInquireForm.totalItemsNum = rData.totalItem
 }
+const clickCallback = (pageNum) =>{
+    console.log(pageNum , "from click callback");
+    callMoreData()
+}
 
 function callMoreData() {
     const sendStr = {
@@ -113,7 +131,9 @@ function callMoreData() {
         JsonData: {
             type: 'lh',
             findname: '',
-            dragonRoomId: route.query.deskname
+            dragonRoomId: route.query.deskname,
+            pageSize: pagination.pageSize,
+            currentPage: pagination.currentPage
         }
     }
     pomelo.send(sendStr, res => {
@@ -122,7 +142,7 @@ function callMoreData() {
         __dataFormat(res.JsonData.bets)
         roadData.value = res.JsonData.data[0].road
         _roadDataModifed(res.JsonData.data[0].road)
-
+        pagination.total = res.JsonData?.totalItem //pagination total
         //betsData.value = res.JsonData.bets
     })
 }
