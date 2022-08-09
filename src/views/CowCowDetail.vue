@@ -167,10 +167,10 @@ function callMoreData() {
     }
     pomelo.send(sendStr, res => {
         console.log('resp ', res)
-        data.value = res.JsonData.data[0]
-        __dataFormat(res.JsonData.bets)
-        roadData.value = res.JsonData.data[0].road
-        _roadDataModifed(res.JsonData.data[0].road)
+        data.value = res.JsonData?.data[0]
+        __dataFormat(res.JsonData?.bets)
+        roadData.value = res.JsonData?.data[0]?.road
+        _roadDataModifed(res.JsonData?.data[0]?.road)
         pagination.total = res.JsonData?.totalItem //pagination total
         //betsData.value = res.JsonData.bets
     })

@@ -1,4 +1,16 @@
 export default {
+  general:{
+    title:'皇家娱乐',
+    lang:'语言',
+    en:'英语',
+    cz:'简体中文',
+    all:'全部',
+    bjl:'百家乐',
+    dragon:'龙虎',
+    cow:'牛牛',
+    onlineUser:'在线用户',
+    real:'即时的',
+   },
     route: {
       dashboard: '首页',
       documentation: '文档',

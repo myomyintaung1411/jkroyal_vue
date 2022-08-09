@@ -30,7 +30,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed,onBeforeUnmount } from 'vue'
+import { ref, reactive, onMounted, computed,onBeforeUnmount } from 'vue'
 import pomelo from "@/socket/pomelo.js";
 import { useRoute } from 'vue-router';
 import singleDragonTiger from "../components/singleDragonTiger.vue";

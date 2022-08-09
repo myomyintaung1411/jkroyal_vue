@@ -1,6 +1,6 @@
 import { createI18n } from "vue-i18n/index"
-import en from '@/config/en.json'
-import cz from '@/config/zh.json'
+import en from '@/config/en.js'
+import cz from '@/config/zh.js'
 // const messages = {
 //     'cz': '@/config/zh.json',
 //     'en': '@/config/en.json' 

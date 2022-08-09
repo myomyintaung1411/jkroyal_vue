@@ -1,4 +1,16 @@
 export default {
+  general:{
+   title:'Royal International',
+   lang:'Language',
+   en:'English',
+   cz:'Chinese',
+   all:'All',
+   bjl:'Baccarat',
+   dragon:'DragonTiger',
+   cow:'Cow Cow',
+   onlineUser:'OnlineUser',
+   real:'RealTime',
+  },
     route: {
       dashboard: 'Dashboard',
       documentation: 'Documentation',

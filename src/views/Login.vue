@@ -107,6 +107,7 @@ export default {
             this.$router.push('/all')
           }
         })
+         //this.$router.push('/all')
       }).catch((e)=>{
         console.error(e);
       })
