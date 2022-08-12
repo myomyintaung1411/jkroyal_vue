@@ -5,7 +5,7 @@
         <img src="@/assets/images/user-fill.svg" alt="" class=" h-14">
       </div>
       <div class="flex flex-col items-center bg-white text-black font-medium w-1/2 h-full justify-center">
-        <p>OnlineUser</p>
+        <p>{{t('route.OnlineMembers')}}</p>
         <p>{{onlineUserData?.totalItemsNum?.total || '0'}}</p>
       </div>
     </div>
@@ -14,7 +14,7 @@
         <img src="@/assets/images/money.svg" alt="" class="h-14 ">
       </div>
       <div class="flex flex-col items-center bg-white text-black font-medium w-1/2 h-full justify-center">
-        <p>Money</p>
+        <p>{{t('access_record.total_amount')}}</p>
         <p>{{onlineUserData?.totalItemsNum?.money || '0'}}</p>
       </div>
     </div>
@@ -23,7 +23,7 @@
         <img src="@/assets/images/phone.svg" alt="" class="h-14 ">
       </div>
       <div class="flex flex-col items-center bg-white text-black font-medium w-1/2 h-full justify-center">
-        <p>H5</p>
+        <p>{{t('table.mobile')}}</p>
         <p>{{onlineUserData?.totalItemsNum?.h5 || '0'}}</p>
       </div>
     </div>
@@ -32,7 +32,7 @@
         <img src="@/assets/images/android-fill.svg" alt="" class="h-14 ">
       </div>
       <div class="flex flex-col items-center bg-white text-black font-medium w-1/2 h-full justify-center">
-        <p>Android</p>
+        <p>{{t('table.android')}}</p>
         <p>{{onlineUserData?.totalItemsNum?.android || '0'}}</p>
       </div>
     </div>
@@ -41,7 +41,7 @@
         <img src="@/assets/images/ios.svg" alt="" class="h-14 ">
       </div>
       <div class="flex flex-col items-center bg-white text-black font-medium w-1/2 h-full justify-center">
-        <p>Ios</p>
+        <p>{{t('table.ios')}}</p>
         <p>{{onlineUserData?.totalItemsNum?.ios || '0'}}</p>
       </div>
     </div>
@@ -50,17 +50,17 @@
         <img src="@/assets/images/computer.svg" alt="" class="h-14 ">
       </div>
       <div class="flex flex-col items-center bg-white text-black font-medium w-1/2 h-full justify-center">
-        <p>Pc</p>
+        <p>{{t('table.pc')}}</p>
         <p>{{onlineUserData?.totalItemsNum?.pc || '0'}}</p>
       </div>
     </div>
   </div>
   <div class="w-full min-w-[1200px] max-w-full   ">
     <div class="py-3 flex items-center bg-slate-600 px-3 space-x-3">
-      <span class="px-2">OnlineUser</span>
+      <span class="px-2">{{t('route.OnlineMembers')}}</span>
       <input v-model="searchUser" id="name" type="name" autocomplete="off" name="name" class="text-sm placeholder-gray-500 text-gray-500  px-2
         w-[100px] py-2 focus:outline-none outline-none" placeholder="请输入账" />
-      <span class="px-2">Terminal</span>
+      <span class="px-2">{{t('online_page.device')}}</span>
       <div class="w-32">
         <Listbox v-model="terminalName">
           <div class="relative mt-1">
@@ -109,10 +109,10 @@
                             <thead>
                                 <tr class=" bg-slate-50 text-center">
                                     <th class=" w-[20%]  min-w-[160px] text-lg  font-semibold text-black py-2   px-3 lg:px-4 border-l border-transparent">
-                                        LoginTime
+                                        {{t('subacc.login_time')}}
                                     </th>
                                     <th class="w-[20%]  min-w-[160px] text-lg font-semibold text-black py-2  px-3 lg:px-4">
-                                        Username
+                                        {{t('user_list.username')}}
                                     </th>
                                     <th class=" w-[20%]  min-w-[160px] text-lg  font-semibold text-black py-2  px-3 lg:px-4">
                                         Reference Name
@@ -121,10 +121,10 @@
                                         Ye
                                     </th>
                                     <th class=" w-[10%]   min-w-[160px]   text-lg font-semibold  text-black py-2  px-3 lg:px-4 ">
-                                        Terminal
+                                        {{t('online_page.device')}}
                                     </th>
                                     <th class=" w-[20%]   min-w-[160px]   text-lg font-semibold  text-black py-2  px-3 lg:px-4 ">
-                                        LoginIp
+                                       {{t('subacc.login_ip')}}
                                     </th>
                                 </tr>
                             </thead>
@@ -181,6 +181,7 @@ import { CheckIcon, SelectorIcon } from '@heroicons/vue/solid'
 import TestTable from '../components/testTable.vue'
 import pomelo from "@/socket/pomelo.js";
 import moment from 'moment'
+import { useI18n } from "vue-i18n/index";
 import Paginate from "vuejs-paginate-next";
 const people = reactive([
   { terminal: 'all' },
@@ -189,6 +190,7 @@ const people = reactive([
   { terminal: 'pc' },
   { terminal: 'ios' },
 ])
+const {t} = useI18n();
 const terminalName = ref(people[0])
 const searchUser = ref('')
 const pagination = reactive({

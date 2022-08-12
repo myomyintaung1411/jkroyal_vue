@@ -109,7 +109,6 @@
         <div class="absolute bottom-0   m-auto left-0 right-0 cursor-pointer ">
           <div class="p-3 rounded bg-slate-50 flex justify-center items-center h-20">
             <LogoutIcon class="w-10 h-10 text-[#350b2d]"></LogoutIcon>
-            
           </div>
         </div>
       </div>

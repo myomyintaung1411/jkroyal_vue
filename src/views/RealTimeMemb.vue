@@ -77,16 +77,16 @@
                         <table class="border-collapse table-fixed   border-none w-full  __table ">
                             <thead class="text-center border-b bg-slate-500  sticky top-0 h-full py-2">
                                 <tr class="text-center ">
-                                    <th class="border border-slate-600  font-bold">游戏</th>
-                                    <th class="border border-slate-600  font-bold">时间</th>
-                                    <th class="border border-slate-600    font-bold w-16">台号</th>
+                                    <th class="border border-slate-600  font-bold">{{t('bet_record.game')}}</th>
+                                    <th class="border border-slate-600  font-bold">{{t('bet_record.settle_time')}}</th>
+                                    <th class="border border-slate-600    font-bold w-16">{{t('bet_record.table')}}</th>
                                     <th class="border border-slate-600  font-bold">局口</th>
-                                    <th class="border border-slate-600  font-bold">账号</th>
-                                    <th class="border border-slate-600  font-bold">下注类型</th>
-                                    <th class="border border-slate-600  font-bold">总押</th>
-                                    <th class="border border-slate-600  font-bold">当前余额</th>
-                                    <th class="border border-slate-600  font-bold">投注IP</th>
-                                    <th class="border border-slate-600 text-white font-bold w-16">终端</th>
+                                    <th class="border border-slate-600  font-bold">{{t('bet_record.account')}}</th>
+                                    <th class="border border-slate-600  font-bold">{{t('bet_record.bet_info')}}</th>
+                                    <th class="border border-slate-600  font-bold">{{t('online_page.total_bet')}}</th>
+                                    <th class="border border-slate-600  font-bold">{{t('online_page.balance')}}</th>
+                                    <th class="border border-slate-600  font-bold">{{t('online_page.bet_ip')}}</th>
+                                    <th class="border border-slate-600 text-white font-bold w-16">{{t('online_page.device')}}</th>
                                     <!-- <th class="border border-slate-600 text-indigo-200  font-bold">闲</th>
                 <th class="border border-slate-600 text-green-300 font-bold">和</th>
                 <th class="border border-slate-600 text-red-400 font-bold">庄对</th>
@@ -208,11 +208,13 @@ import moment from 'moment'
 import global from '@/utils/global';
 // import Pagination from '@/components/Pagination.vue';
 import Paginate from "vuejs-paginate-next";
+import { useI18n } from "vue-i18n/index";
 
 // import Pagination from 'v-pagination-3';
 
 const account = ref('')
 const teskNum = ref('')
+const {t} = useI18n();
 
 // const currentPage = ref(1)
 // const pageSize = ref(10)
