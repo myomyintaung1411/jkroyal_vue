@@ -2,9 +2,18 @@
     <div  @click="requstMore()"
         class="  w-[632px] max-w-[632px]  flex 
          bg-slate-800 h-[280px]  shadow-lg   shadow__  cursor-pointer " :class="routeName === '/cowcow' || routeName === '/all' ? 'my-3 mx-3' : 'my-0'">
-        <div class="py-3 px-1 text-center relative   w-[120px] overflow-hidden   bg-[#350b2d] ">
+        <div class="py-3 px-1 text-center relative flex flex-col justify-between  w-[120px] overflow-hidden   bg-[#350b2d] ">
             <p class="text-white font-medium text-3xl ">{{ data.roomName }}</p>
-            <div class="mt-24">
+            <div class="text-white text-lg font-extrabold tracking-wide">
+              <p v-if="data.state == '0'">开局</p>
+              <p v-else-if="data.state == '1'" class="text-green-400">开始下注</p>
+              <p v-else-if="data.state == '2'" class="text-red-500">停止下注</p>
+              <p v-else-if="data.state == '3'">开牌中</p>
+              <p v-else-if="data.state == '4'">开奖</p>
+              <p v-else-if="data.state == '5'">派彩</p>
+              <p v-else-if="data.state == '-1'" class="text-gray-400">等待操作</p>
+            </div>
+            <div>
                 <h1 class="text-lg font-bold tracking-wide text-white text-center ">局口:{{ data.cc }}</h1>
                 <h1 class="text-lg font-bold tracking-wide text-white text-center ">限红:{{ data.xh }}</h1>
             </div>

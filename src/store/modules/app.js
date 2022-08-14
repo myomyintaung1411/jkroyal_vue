@@ -17,6 +17,10 @@ export default {
       key: "@hKe9@A1lKe9$Tz1kE@8HnG7",
       iv: '1234567890123456'
     },
+    allTableInfo:null,
+    bjlData:null,
+    dragonTigerData:null,
+    cowcowData:null
   }),
 
   getters: {
@@ -25,10 +29,30 @@ export default {
     USER: state => state.user,
     Game_En: state => state.gameEn,
     BJL_Detail:state => state.bjldetail,
-    Table_BetData:state => state.tableBetData
+    Table_BetData:state => state.tableBetData,
+    //this is for all tables of bet data
+    All_Table_Info:state => state.allTableInfo,
+
+    BjlData:state => state.bjlData,
+    DragonTigerData:state => state.dragonTigerData,
+    CowCowData :state => state.cowcowData,
   },
 
   mutations: {
+    ALL_TABLE_INFO(state,payload) {
+      console.log("payload of all tables of bet data" , payload);
+      state.allTableInfo = payload
+    },
+    BJL_DATA(state,payload) {
+      state.bjlData = payload
+    },
+    DRAGON_TIGER_DATA(state,payload) {
+      state.dragonTigerData = payload
+    },
+    COWCOW_DATA(state,payload) {
+      state.cowcowData = payload
+    },
+
     TABLE_BETDATA(state,payload) {
       state.tableBetData = payload
     },

@@ -92,8 +92,8 @@
                             </div>
                             <div v-if="bet.niuniuResult" style="margin-left: 5px;">
                                 <span v-for="(n, i) in bet.nnWinLose" :key="i" class="nn_info_container">
-                                    <span v-if="n === '输'" class="nn_info_bet_show" style="color: #FF1744">lose</span>
-                                    <span v-else class="nn_info_bet_show" style="color: #00C853">win</span>
+                                    <span v-if="n === '输'" class="nn_info_bet_show" style="color: #FF1744">{{t('table.lose')}}</span>
+                                    <span v-else class="nn_info_bet_show" style="color: #00C853">{{t('table.win')}}</span>
                                 </span>
                             </div>
                         </div>

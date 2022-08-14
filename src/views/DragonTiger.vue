@@ -8,8 +8,14 @@
 <script setup>
 import singleDragonTiger from "@/components/singleDragonTiger.vue";
 import pomelo from "@/socket/pomelo.js";
-import { ref, onMounted } from 'vue'
-const lhData = ref(null)
+import { ref, onMounted,computed } from 'vue'
+import { useStore } from "vuex";
+const store = useStore();
+
+//for props data
+const lhData = computed(() => store.getters["app/All_Table_Info"]);
+
+//const lhData = ref(null)
 
 function getDragonTiger(type) {
     console.log(type);
@@ -27,12 +33,15 @@ function getDragonTiger(type) {
         console.log(res.JsonData?.result + 'res of dragontiger ************') ;
         if (res.JsonData.result == 'ok' && res.JsonData?.data.length > 0) {
             console.log('resp ', res.JsonData.data)
-            lhData.value = res.JsonData.data
+            //lhData.value = res.JsonData.data
+            store.commit('app/ALL_TABLE_INFO',res.JsonData.data)
             // console.log('bjlData data ', bjlData.value)
             console.log("rrrrrrrr");
         }
     })
 }
+//null in created otherwise errors occured
+store.commit('app/ALL_TABLE_INFO',null)
 onMounted(() => {
     getDragonTiger('lh')
 })

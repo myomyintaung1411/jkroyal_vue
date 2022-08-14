@@ -19,9 +19,6 @@
         <div class="w-full overflow-x-scroll   flex">
           <singleCowCow v-for="data in cowcowData?.fixs" :key="data.roomId" :data="data" ></singleCowCow>
         </div>
-        <!-- <singleDragonTiger v-for="data in dragonTiger?.fixs" :key="data.roomId" :data="data"></singleDragonTiger>
-        <singleBjl v-for="data in bjlData?.fixs" :key="data.roomId" :data="data"></singleBjl>
-        <singleCowCow v-for="data in cowcowData?.fixs" :key="data.roomId" :data="data" ></singleCowCow> -->
     </div>
 </template>
 
@@ -30,16 +27,17 @@ import singleBjl from "@/components/singleBjl.vue";
 import singleCowCow from "@/components/singleCowCow.vue";
 import singleDragonTiger from "@/components/singleDragonTiger.vue";
 import { useI18n } from "vue-i18n/index";
-
+import { useStore } from "vuex";
 import pomelo from "@/socket/pomelo.js";
-import { ref, onMounted } from 'vue'
+import { ref, onMounted,computed } from 'vue'
 // const bjlData = ref(null)
 const bjlData = ref(null)
 const dragonTiger = ref(null)
 const cowcowData = ref(null)
-const allData = ref(null)
+//const allData = ref(null)
+const allData = computed(() => store.getters["app/All_Table_Info"]);
 const {t} = useI18n();
-
+const store = useStore();
 function getDeskLists(type) {
     console.log(type);
     const sendStr = {
@@ -54,9 +52,10 @@ function getDeskLists(type) {
         // console.log('resp ', res)
         if (res.JsonData.result == 'ok' && res.JsonData.data.length > 0) {
             console.log('resp ', res.JsonData.data)
-            allData.value = res.JsonData.data
+            //allData.value = res.JsonData.data
+             store.commit('app/ALL_TABLE_INFO',res.JsonData.data)
             // console.log('bjlData data ', bjlData.value)
-            mergedData(res.JsonData.data)
+            mergedData(allData.value)
             console.log("rrrrrrrr");
         }
     })
@@ -76,13 +75,14 @@ function getDeskLists(type) {
 
       const fixtureData = Object.values(merged);
       const sortData = fixtureData.sort((a, b) => a.rType.localeCompare(b.rType))
-      //console.log(sortData, "merged data ************");
-        bjlData.value = sortData[1]
-      dragonTiger.value = sortData[4]
+      console.log(sortData, "merged data ************");
+
+       bjlData.value = sortData[1]
+       dragonTiger.value = sortData[4]
        cowcowData.value = sortData[5]
      // return sortData;
     }
-
+store.commit('app/ALL_TABLE_INFO',null)
 onMounted(() => {
     getDeskLists('all')
 })

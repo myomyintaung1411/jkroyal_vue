@@ -57,17 +57,17 @@
   </div> -->
     <div class="w-full min-w-[1200px] max-w-full   ">
         <div class="py-3 flex items-center bg-slate-600 px-3 space-x-3">
-            <span class="px-2">OnlineUser</span>
+            <span class="px-2">{{t('route.OnlineMembers')}}</span>
             <input v-model="account" id="name" type="name" autocomplete="off" name="name" class="
       text-sm placeholder-gray-500 text-gray-500  px-2 
-        w-80 py-2 focus:outline-none outline-none" placeholder="请输入账" />
-            <span class="px-2">台号</span>
+        w-80 py-2 focus:outline-none outline-none" :placeholder="t('message.enter_account')" />
+            <span class="px-2">{{t('bet_record.table')}}</span>
             <input v-model="teskNum" id="name" type="name" autocomplete="off" name="name" class="
       text-sm placeholder-gray-500 text-gray-500  px-2 
-        w-80 py-2 focus:outline-none outline-none" placeholder="请输入账" />
+        w-80 py-2 focus:outline-none outline-none" placeholder="请输入账号" />
             <div>
                 <button @click="doFind()" type="submit"
-                    class="bg-blue-600 shadow-md py-[6px] px-9 rounded outline-none focus:outline-none ease-in hover:bg-blue-900 ">Search</button>
+                    class="bg-blue-600 shadow-md py-[6px] px-9 rounded outline-none focus:outline-none ease-in hover:bg-blue-900 ">{{t('buttons.search')}}</button>
             </div>
         </div>
         <section class="w-full min-w-full __tableHeight ">
@@ -156,9 +156,9 @@
                                                 <span v-for="(n, i) in bet.nnWinLose" :key="i"
                                                     class="nn_info_container">
                                                     <span v-if="n === '输'" class="nn_info_bet_show"
-                                                        style="color: #FF1744">lose</span>
+                                                        style="color: #FF1744">{{t('table.lose')}}</span>
                                                     <span v-else class="nn_info_bet_show"
-                                                        style="color: #00C853">win</span>
+                                                        style="color: #00C853">{{t('table.win')}}</span>
                                                 </span>
                                             </div>
                                         </div>
@@ -246,12 +246,12 @@ const clickCallback = (pageNum) =>{
     getOnTime()
 }
 
-    function requestDataEveryFiveSec() {
-    interval.value = setInterval(() => {
-        getOnTime()
-        console.log("5 log second");
-    }, 5000);
-    // }
+function requestDataEveryFiveSec() {
+  interval.value = setInterval(() => {
+    getOnTime()
+    console.log("5 log second");
+  }, 5000);
+  // }
 }
 
  function doFind() {

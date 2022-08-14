@@ -545,7 +545,8 @@ function moveData() {
     will-change: transform;
     user-select: none;
     cursor: grabbing;
-    overflow-x: hidden;
+    overflow: scroll;
+    /* overflow-x: hidden; */
     /* -ms-overflow-style: none; 
     scrollbar-width: none;   */
 

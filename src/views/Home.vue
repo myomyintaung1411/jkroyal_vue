@@ -107,7 +107,7 @@
         </div>
         </div>
         <div class="absolute bottom-0   m-auto left-0 right-0 cursor-pointer ">
-          <div class="p-3 rounded bg-slate-50 flex justify-center items-center h-20">
+          <div @click="logout()" class="p-3 rounded bg-slate-50 flex justify-center items-center h-20">
             <LogoutIcon class="w-10 h-10 text-[#350b2d]"></LogoutIcon>
           </div>
         </div>
@@ -126,6 +126,8 @@ import { onMounted, ref } from "vue";
 import BjlModal from "@/components/BjlModal.vue";
 import { useRouter,useRoute } from "vue-router";
 import { useI18n } from "vue-i18n/index";
+import { useStore } from "vuex";
+
 import {
   RadioGroup,
   RadioGroupLabel,
@@ -147,12 +149,19 @@ const modal = ref(false);
 const activeTab = ref(0)
 const router = useRouter()
 const route = useRoute()
+const store = useStore();
+
 // const bjlData = ref(null)
 const {t} = useI18n();
  const lang = ref(localStorage.getItem("l") || "cz");
 function showModal () {
   console.log("llllllllllllllllllemittttttttttttt");
   modal.value = true;
+}
+
+const logout = () => {
+  window.location.reload();
+  router.push('/login')
 }
 
 const changeLanguage = () => {
@@ -164,6 +173,7 @@ const changeLanguage = () => {
 const clickData = (n) =>{
   console.log(n);
   activeTab.value = n
+  
   switch (activeTab.value) {
     case 0:
       router.push('/all')

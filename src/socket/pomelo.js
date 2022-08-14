@@ -103,8 +103,9 @@ p_server2.on('close', function (e) {
 })
 
 p_server2.on('onMsg', function (e) {
-  //  console.log('----onMsg------:', e)
-  ws.doData(e)
+  // console.log('----onMsg------:', e)
+  //ws.doData(e)
+  ws.eventMsg(e)
 })
 
 p_server2.on('onKick', function (e) {
