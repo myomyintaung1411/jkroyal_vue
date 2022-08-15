@@ -7,15 +7,15 @@
         </div> -->
     </div>
     <div class="w-full">
-        <div class="py-2 bg-[#350B2D] px-3 mx-5 text-xl">{{t('general.bjl')}}</div>
+        <div class="py-2 bg-slate-500 px-3 mx-5 text-xl">{{t('general.bjl')}}</div>
         <div class="w-full overflow-x-scroll whitespace-nowrap  flex">
            <singleBjl v-for="data in bjlData?.fixs" :key="data.roomId" :data="data"></singleBjl>
         </div>
-        <div class="py-2 bg-[#350B2D] px-3 mx-5 text-xl my-3">{{t('general.dragon')}}</div>
+        <div class="py-2 bg-slate-500 px-3 mx-5 text-xl my-3">{{t('general.dragon')}}</div>
         <div class="w-full overflow-x-scroll whitespace-nowrap  flex">
            <singleDragonTiger v-for="data in dragonTiger?.fixs" :key="data.roomId" :data="data"></singleDragonTiger>
         </div>
-        <div class="py-2 bg-[#350B2D] px-3 mx-5 text-xl my-3">{{t('general.cow')}}</div>
+        <div class="py-2 bg-slate-500 px-3 mx-5 text-xl my-3">{{t('general.cow')}}</div>
         <div class="w-full overflow-x-scroll   flex">
           <singleCowCow v-for="data in cowcowData?.fixs" :key="data.roomId" :data="data" ></singleCowCow>
         </div>

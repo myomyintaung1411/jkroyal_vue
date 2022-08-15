@@ -1,6 +1,6 @@
 <template>
-    <div class="  bg-slate-700 w-full overflow-hidden  ">
-        <div v-if="data" class="w-full flex  ">
+    <div class="  bg-slate-700 w-full overflow-x-hidden  ">
+        <div v-if="data" class="w-full flex">
             <singleBjl  :data="data"></singleBjl>
             <div  class=" scroll_main bg-slate-800 overflow-y-hidden relative">
                 <div @click="moveData()" ref="scroll_road"
@@ -16,7 +16,10 @@
                 </div>
             </div>
         </div>
-     <TableData></TableData>
+       
+        <div style="overflow-x:auto !important">
+            <TableData></TableData>
+        </div>
       <div v-if="betsData?.length > 0" class="flex items-center justify-center">
             <Paginate v-model="pagination.currentPage" :page-count="Math.ceil(pagination.total / pagination.pageSize)"
                 :page-range="3" :margin-pages="1" :click-handler="clickCallback" :prev-text="'Prev'" :next-text="'Next'"
@@ -554,6 +557,8 @@ function moveData() {
     overflow-y: hidden;
     position: relative;
     @apply w-full;
+    min-width: 100%;
+
     will-change: transform;
     user-select: none;
     cursor: grabbing;

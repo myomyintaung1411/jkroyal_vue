@@ -1,6 +1,6 @@
 <template>
-    <div class=" mt-2   table_wrap w-full min-w-[1350px] touch-none ">
-        <table class="border-collapse table-fixed   border-none w-full  __table ">
+    <div class=" mt-2  table_wrap w-full min-w-[1350px] max-w-full touch-none  ">
+        <table class=" table-auto w-full  __table  ">
             <thead class="text-center border-b bg-slate-500  sticky top-0 h-full py-2">
                 <tr class="text-center ">
                                     <th class="border border-slate-600  font-bold">{{t('bet_record.game')}}</th>
@@ -20,7 +20,7 @@
                 <th class="border border-slate-600 text-indigo-200 font-bold">闲对</th> -->
                 </tr>
             </thead>
-            <tbody class="text-center  overflow-scroll      ">
+            <tbody class="text-center">
                 <tr v-for="(bet, index) in betsData" :key="index" class="h-12">
                     <td class="border border-slate-600 text-xl font-bold   text-white ">{{ transGameStr(bet.rType)
                     }}</td>
@@ -78,7 +78,7 @@
                             <div class="">
                                 <span v-for="(n, index) in bet.niuniu" :key="index" class="nn_info_container">
                                     <p class="nn_info_title"
-                                        :style="n.indexOf('闲') != -1 ? 'color: blue' : 'color: red'" >
+                                        :style="n.indexOf('闲') != -1 ? 'color: lightblue' : 'color: red'" >
                                         {{ n }}
                                     </p>
                                 </span>
@@ -157,5 +157,6 @@ function transGameStr(strGame) {
 }
 .table_wrap{
     height: calc(100vh - 400px);
+    overflow-x: auto;
 }
 </style>

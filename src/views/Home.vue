@@ -8,11 +8,10 @@
           <img src="@/assets/images/logo.png" class="max-w-[220px] h-32 max-h-32"  alt="logo">
           <h1 class="text-2xl font-bold tracking-wider text-center pt-3 text-white">{{t('general.title')}}</h1>
         </div>
-        <div class=" px-2 w-full text-xl">
+        <!-- <div class=" px-2 w-full text-xl">
           <p class="tracking-wide">{{t('general.lang')}}</p>
           <div class="flex py-2">
               <RadioGroup v-model="lang" @click="changeLanguage()">
-                <!-- <RadioGroupLabel class="sr-only">Server size</RadioGroupLabel> -->
                 <div class=" flex space-x-2">
                   <RadioGroupOption as="template" value="en" v-slot="{ active, checked }">
                     <div :class="[
@@ -25,7 +24,6 @@
                         <div class="flex items-center">
                           <div class="text-sm flex items-center justify-center space-x-3 w-fit">
                             <RadioGroupLabel as="p" :class="checked ? 'text-white' : 'text-white'" class="font-medium w-fit" >{{t('general.en')}}</RadioGroupLabel>
-                            <!-- <img src="@/assets/us.svg" alt class="w-8 h-8" /> -->
                           </div>
                         </div>
                       </div>
@@ -42,7 +40,6 @@
                         <div class="flex items-center">
                           <div class="text-sm flex items-center justify-center space-x-3 w-fit">
                             <RadioGroupLabel as="p" :class="checked ? 'text-white' : 'text-white'" class="font-medium w-fit">{{t('general.cz')}}</RadioGroupLabel>
-                            <!-- <img src="@/assets/ch.svg" alt class="w-8 h-8" /> -->
                           </div>
                         </div>
                       </div>
@@ -51,22 +48,28 @@
                 </div>
               </RadioGroup>
           </div>
-        </div>
+        </div> -->
         <div class="py-2 w-full" @click="clickData(0)">
         <div class=" cursor-pointer">
-          <div class="w-full py-3 px-3 rounded bg-slate-50 
-          text-black hover:text-white hover:bg-slate-500 text-center shadow-xl 
-          ease-in duration-300 hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 0 ? '__activeColor' : ''">
+          <div class="w-full py-1 px-3 rounded bg-slate-400 text-black 
+          hover:text-white hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
+          hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 0 ? '__activeColor' : ''">
+            <div class="flex items-center space-x-5">
+            <img src="@/assets/images/all.svg" class="w-10 h-14 text-[#e4cd76]" alt="">
             <p class="text-2xl tracking-wide font-medium">{{t('general.all')}}</p>
+          </div>
           </div>
         </div>
         </div>
         <div class="py-2 w-full" @click="clickData(1)" >
         <div class=" cursor-pointer">
-          <div class="w-full py-3 px-3 rounded bg-slate-50 text-black 
+          <div class="w-full py-1 px-3 rounded bg-slate-50 text-black 
           hover:text-white hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
           hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 1 ? '__activeColor' : ''">
+            <div class="flex items-center space-x-5">
+            <img src="@/assets/images/baccarat.svg" class="w-10 h-14 text-[#e4cd76]" alt="">
             <p class="text-2xl tracking-wide font-medium">{{t('general.bjl')}}</p>
+          </div>
           </div>
         </div>
         </div>
@@ -142,7 +145,8 @@ import {
   CheckIcon,
   SearchIcon,
   TranslateIcon ,
-  LogoutIcon
+  LogoutIcon,
+  ViewBoardsIcon
 } from "@heroicons/vue/outline";
 const modal = ref(false);
 

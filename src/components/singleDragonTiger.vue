@@ -5,7 +5,8 @@
         <div class="py-3 px-1 text-center relative flex flex-col justify-between   w-[150px] overflow-hidden   bg-[#350b2d] ">
             <p class="text-white font-medium text-3xl ">{{ data.roomName }}</p>
             <div class="text-white text-lg font-extrabold tracking-wide">
-              <p v-if="data.state == '0'">开局</p>
+              <!-- 0 init, 1 start,2 stop,3 opening, 4 sending card resutl,5 payout -->
+             <p v-if="data.state == '0'">开局</p> 
               <p v-else-if="data.state == '1'" class="text-green-400">开始下注</p>
               <p v-else-if="data.state == '2'" class="text-red-500">停止下注</p>
               <p v-else-if="data.state == '3'">开牌中</p>

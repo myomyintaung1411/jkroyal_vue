@@ -1,13 +1,12 @@
 <template>
-    <div class="  bg-slate-700 w-full overflow-hidden  ">
+    <div class="  bg-slate-700 w-full overflow-x-hidden  ">
         <div v-if="data" class="w-full flex  ">
             <singleCowCow :data="data"></singleCowCow>
             <div class=" scroll_main bg-slate-800 overflow-y-hidden relative">
-                <div @click="moveData()"
-                    class="dl-section r-section  whitespace-nowrap   h-full overflow-y-hidden  ">
+                <div @click="moveData()" class="dl-section r-section  whitespace-nowrap   h-full overflow-y-hidden  ">
                     <!-- {{dl.lst}} -->
                     <div class="col c2  h-[280px]   text-center  " v-for="(item, idx) in nnp.lst" :key="idx">
-                    <!-- {{item}} -->
+                        <!-- {{item}} -->
                         <div class="cell w-[45px] text-center overflow-hidden  ">
                             <div class="nn-b-d w-full h-full relative">
                                 <img v-if="item.n0.v !== '.'" :src="'/static/img/nn_b' + item.n0.v + '.png'" alt=""
@@ -34,8 +33,8 @@
 
                         <div class="cell w-[45px] text-center overflow-hidden">
                             <div class="nn-b-d w-full h-full relative" v-if="item.n1.v !== undefined">
-                                <img class="y w-full h-full" :class="{ 'active': item.n3.w === 1 }" v-if="item.n3.v !== '.'"
-                                    :src="'/static/img/nn_' + item.n3.v + '.png'" alt="">
+                                <img class="y w-full h-full" :class="{ 'active': item.n3.w === 1 }"
+                                    v-if="item.n3.v !== '.'" :src="'/static/img/nn_' + item.n3.v + '.png'" alt="">
                                 <img v-else src="/static/img/nn_n.png" alt="">
                             </div>
                         </div>
@@ -58,16 +57,18 @@
                 </div>
             </div>
         </div>
-        <TableData></TableData>
-         <div v-if="betsData?.length > 0" class="flex items-center justify-center">
+        <div style="overflow-x:auto !important">
+            <TableData></TableData>
+        </div>
+        <div v-if="betsData?.length > 0" class="flex items-center justify-center">
             <Paginate v-model="pagination.currentPage" :page-count="Math.ceil(pagination.total / pagination.pageSize)"
                 :page-range="3" :margin-pages="1" :click-handler="clickCallback" :prev-text="'Prev'" :next-text="'Next'"
-                :container-class="'pagination'" :hide-prev-next="true" :page-class="'page-item'" :first-last-button	="true"
-                class="flex items-center space-x-4" :no-li-surround="true" :page-link-class="'page-link'"
-                :active-class="'active-class'">
+                :container-class="'pagination'" :hide-prev-next="true" :page-class="'page-item'"
+                :first-last-button="true" class="flex items-center space-x-4" :no-li-surround="true"
+                :page-link-class="'page-link'" :active-class="'active-class'">
 
             </Paginate>
-     </div>
+        </div>
     </div>
 </template>
 
@@ -345,7 +346,7 @@ function moveData() {
     user-select: none;
     cursor: grabbing;
     /* overflow-x: hidden; */
-    overflow: scroll;
+    overflow-x: scroll;
     /* -ms-overflow-style: none; 
     scrollbar-width: none;   */
 
