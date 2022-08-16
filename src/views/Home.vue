@@ -5,8 +5,8 @@
     <div class="flex  h-screen w-full overflow-y-hidden ">
       <div class="max-w-sm w-60  bg-slate-800 h-screen drawer_bg relative overflow-y-hidden ">
         <div class="text-center flex flex-col justify-center items-center p-5">
-          <img src="@/assets/images/logo.png" class="max-w-[220px] h-32 max-h-32"  alt="logo">
-          <h1 class="text-2xl font-bold tracking-wider text-center pt-3 text-white">{{t('general.title')}}</h1>
+          <img src="@/assets/images/logo.png" class="max-w-[220px] h-32 max-h-32" alt="logo">
+          <h1 class="text-2xl font-bold tracking-wider text-center pt-3 text-white">{{ t('general.title') }}</h1>
         </div>
         <!-- <div class=" px-2 w-full text-xl">
           <p class="tracking-wide">{{t('general.lang')}}</p>
@@ -50,76 +50,90 @@
           </div>
         </div> -->
         <div class="py-2 w-full" @click="clickData(0)">
-        <div class=" cursor-pointer">
-          <div class="w-full py-1 px-3 rounded bg-slate-400 text-black 
-          hover:text-white hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
+          <div class=" cursor-pointer">
+            <div class="w-full h-14 px-3 rounded bg-slate-400 text-white 
+          hover:text-[#debd6b] hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
           hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 0 ? '__activeColor' : ''">
-            <div class="flex items-center space-x-5">
-            <img src="@/assets/images/all.svg" class="w-10 h-14 text-[#e4cd76]" alt="">
-            <p class="text-2xl tracking-wide font-medium">{{t('general.all')}}</p>
-          </div>
+              <div class="flex items-center space-x-5 h-full">
+                <img src="@/assets/images/all.svg" class="w-14 h-14 text-[#e4cd76]" alt="">
+                <p class="text-2xl tracking-wide font-bold">{{ t('general.all') }}</p>
+              </div>
+            </div>
           </div>
         </div>
-        </div>
-        <div class="py-2 w-full" @click="clickData(1)" >
-        <div class=" cursor-pointer">
-          <div class="w-full py-1 px-3 rounded bg-slate-50 text-black 
-          hover:text-white hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
+        <div class="py-2 w-full" @click="clickData(1)">
+          <div class=" cursor-pointer">
+            <div class="w-full h-14 px-3 rounded bg-slate-400 text-white
+          hover:text-[#debd6b] hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
           hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 1 ? '__activeColor' : ''">
-            <div class="flex items-center space-x-5">
-            <img src="@/assets/images/baccarat.svg" class="w-10 h-14 text-[#e4cd76]" alt="">
-            <p class="text-2xl tracking-wide font-medium">{{t('general.bjl')}}</p>
-          </div>
+              <div class="flex items-center space-x-5 h-full">
+                <img src="@/assets/images/baccarat.svg" class="w-14 h-14 text-[#e4cd76]" alt="">
+                <p class="text-2xl tracking-wide font-bold">{{ t('general.bjl') }}</p>
+              </div>
+            </div>
           </div>
         </div>
-        </div>
-        <div class="py-2 w-full" @click="clickData(2)" >
-        <div class=" cursor-pointer">
-          <div class="w-full py-3 px-3 rounded bg-slate-50 text-black 
-          hover:text-white hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
+        <div class="py-2 w-full" @click="clickData(2)">
+          <div class=" cursor-pointer">
+            <div class="w-full h-14 px-3 rounded bg-slate-400 text-white 
+          hover:text-[#debd6b] hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
           hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 2 ? '__activeColor' : ''">
-            <p class="text-2xl tracking-wide font-medium">{{t('general.dragon')}}</p>
+              <div class="flex items-center space-x-5 h-full">
+                <img src="@/assets/images/dragon.svg" class="w-14 h-14 text-[#e4cd76]" alt="">
+                <p class="text-2xl tracking-wide font-bold">{{ t('general.dragon') }}</p>
+              </div>
+            </div>
           </div>
         </div>
-        </div>
-        <div class="py-2 w-full" @click="clickData(3)" >
-        <div class=" cursor-pointer">
-          <div class="w-full py-3 px-3 rounded bg-slate-50 text-black 
-          hover:text-white hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
+        <div class="py-2 w-full" @click="clickData(3)">
+          <div class=" cursor-pointer">
+            <div class="w-full h-14 px-3 rounded bg-slate-400 text-white 
+          hover:text-[#debd6b] hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
           hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 3 ? '__activeColor' : ''">
-            <p class="text-2xl tracking-wide font-medium">{{t('general.cow')}}</p>
+              <!-- <p class="text-2xl tracking-wide font-medium">{{t('general.cow')}}</p> -->
+              <div class="flex items-center space-x-5 h-full">
+                <img src="@/assets/images/cowcow.svg" class="w-14 h-14 text-[#e4cd76]" alt="">
+                <p class="text-2xl tracking-wide font-bold">{{ t('general.cow') }}</p>
+              </div>
+            </div>
           </div>
         </div>
-        </div>
-        <div class="py-2 w-full" @click="clickData(4)" >
-        <div class=" cursor-pointer">
-          <div class="w-full py-3 px-3 rounded bg-slate-50 text-black 
-          hover:text-white hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
+        <div class="py-2 w-full" @click="clickData(4)">
+          <div class=" cursor-pointer">
+            <div class="w-full h-14 px-3 rounded bg-slate-400 text-white 
+          hover:text-[#debd6b] hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
           hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 4 ? '__activeColor' : ''">
-            <p class="text-2xl tracking-wide font-medium">{{t('general.onlineUser')}}</p>
+              <!-- <p class="text-2xl tracking-wide font-medium">{{t('general.onlineUser')}}</p> -->
+              <div class="flex items-center space-x-5 h-full">
+                <img src="@/assets/images/member.svg" class="w-14 h-14 text-[#e4cd76]" alt="" />
+                <p class="text-2xl tracking-wide font-bold">{{ t('general.onlineUser') }}</p>
+              </div>
+            </div>
           </div>
         </div>
-        </div>
-        <div class="py-2 w-full" @click="clickData(5)" >
-        <div class=" cursor-pointer">
-          <div class="w-full py-3 px-3 rounded bg-slate-50 text-black 
-          hover:text-white hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
+        <div class="py-2 w-full" @click="clickData(5)">
+          <div class=" cursor-pointer">
+            <div class="w-full h-14 px-3 rounded bg-slate-400 text-white
+          hover:text-[#debd6b] hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
           hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 5 ? '__activeColor' : ''">
-            <p class="text-2xl tracking-wide font-medium">{{t('general.real')}}</p>
+              <div class="flex items-center space-x-5 h-full">
+                <img src="@/assets/images/realtime.svg" class="w-14 h-14 text-[#e4cd76]" alt="" />
+                <p class="text-2xl tracking-wide font-bold">{{ t('general.real') }}</p>
+              </div>
+            </div>
           </div>
-        </div>
         </div>
         <div class="absolute bottom-0   m-auto left-0 right-0 cursor-pointer ">
           <div @click="logout()" class="p-3 rounded bg-slate-50 flex justify-center items-center h-20">
-            <LogoutIcon class="w-10 h-10 text-[#350b2d]"></LogoutIcon>
+            <LogoutIcon class="w-10 h-10 text-[#e7ae1d]"></LogoutIcon>
           </div>
         </div>
       </div>
       <div class="main-content w-[calc(100%_-_15rem)]  h-screen relative  p-5 overflow-y-scroll ">
-        <router-view/>
-     </div>
+        <router-view />
+      </div>
     </div>
-   </div>
+  </div>
 </template>
 <script setup>
 import singleBjl from "../components/singleBjl.vue";
@@ -127,7 +141,7 @@ import ModalDialog from "@/components/ModalDialog.vue";
 import pomelo from "@/socket/pomelo.js";
 import { onMounted, ref } from "vue";
 import BjlModal from "@/components/BjlModal.vue";
-import { useRouter,useRoute } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import { useI18n } from "vue-i18n/index";
 import { useStore } from "vuex";
 
@@ -144,7 +158,7 @@ import {
   SelectorIcon,
   CheckIcon,
   SearchIcon,
-  TranslateIcon ,
+  TranslateIcon,
   LogoutIcon,
   ViewBoardsIcon
 } from "@heroicons/vue/outline";
@@ -156,9 +170,9 @@ const route = useRoute()
 const store = useStore();
 
 // const bjlData = ref(null)
-const {t} = useI18n();
- const lang = ref(localStorage.getItem("l") || "cz");
-function showModal () {
+const { t } = useI18n();
+const lang = ref(localStorage.getItem("l") || "cz");
+function showModal() {
   console.log("llllllllllllllllllemittttttttttttt");
   modal.value = true;
 }
@@ -174,18 +188,18 @@ const changeLanguage = () => {
   window.location.reload();
 };
 
-const clickData = (n) =>{
+const clickData = (n) => {
   console.log(n);
   activeTab.value = n
-  
+
   switch (activeTab.value) {
     case 0:
       router.push('/all')
-     // getDeskLists('all')
+      // getDeskLists('all')
       break;
     case 1:
       router.push('/bjl')
-     // getBjlLists('bjl')
+      // getBjlLists('bjl')
       break;
     case 2:
       router.push('/dgtiger')
@@ -199,83 +213,91 @@ const clickData = (n) =>{
     case 5:
       router.push('/realtimememb')
       break;
-  
+
     default:
       break;
   }
 }
 </script>
 <style scoped>
-.drawer_bg{
- background: url("https://template.viserlab.com/casinous/demo/assets/images/banner/bg.png");
- background-size: cover;
- background-repeat: no-repeat;
+.drawer_bg {
+  background: url("https://template.viserlab.com/casinous/demo/assets/images/banner/bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-.bg__info_img{
+.bg__info_img {
   background-image: url("https://template.viserlab.com/casinous/demo/assets/images/game/shape.png");
   background-size: cover;
   background-repeat: no-repeat;
 
 }
-.shadow__{
+
+.shadow__ {
   box-shadow: -3.828px -3.828px 6px 0px rgba(5, 4, 0, 0.801), 3px 5px 8px 0px rgba(24, 13, 8, 0.2);
 }
-.scroll_main{
- @apply w-[calc(100%_-_500px)] min-w-[calc(100%_-_500px)] max-w-[(100%_-_500px)]
- overflow-x-hidden;
+
+.scroll_main {
+  @apply w-[calc(100%_-_500px)] min-w-[calc(100%_-_500px)] max-w-[(100%_-_500px)] overflow-x-hidden;
 }
-.r-section{
-    overflow-y: hidden;
-      position: relative;
-      @apply w-full;
-      will-change: transform;
-      user-select: none;
-      cursor: grabbing;
-      overflow-x: hidden;
-     /* -ms-overflow-style: none; 
+
+.r-section {
+  overflow-y: hidden;
+  position: relative;
+  @apply w-full;
+  will-change: transform;
+  user-select: none;
+  cursor: grabbing;
+  overflow-x: hidden;
+  /* -ms-overflow-style: none; 
     scrollbar-width: none;   */
-    
-    /* width: calc((100vw - 198px)); */
+
+  /* width: calc((100vw - 198px)); */
 }
+
 /* .r-section::-webkit-scrollbar { 
     display: none;  
 } */
-.col{
-    display: inline-block;
-    letter-spacing: 0;
-    vertical-align: top;
-    border-right: 1px solid;
-    @apply border-slate-700;
-    /* height: 100%; */
-    position: relative;
-    text-align: center;
+.col {
+  display: inline-block;
+  letter-spacing: 0;
+  vertical-align: top;
+  border-right: 1px solid;
+  @apply border-slate-700;
+  /* height: 100%; */
+  position: relative;
+  text-align: center;
 }
- /* .col.c2 .cell {
+
+/* .col.c2 .cell {
 	 height: calc(-6.0833333333333vh);
 	 width: calc(-5.0833333333333vw);
    background: red;
 } */
-.cell{
+.cell {
   border-bottom: 1px solid;
- @apply border-slate-700;
+  @apply border-slate-700;
   height: calc(208px / 6);
 }
-.cell:last-child{
+
+.cell:last-child {
   border-bottom: 1px solid transparent;
 }
-.table_wrap{
+
+.table_wrap {
   max-height: 50vh;
   overflow-y: scroll;
-  display:block;
+  display: block;
 }
-.__table{
+
+.__table {
   overflow: scroll !important;
 }
-.__activeColor{
-      background-color: rgb(100 116 139 / 1);
-      color:white;
-      border-top-left-radius: 1.5rem;
-      border-bottom-left-radius: 1.5rem
+
+.__activeColor {
+  background-color: rgb(100 116 139 / 1);
+  color:#debd6b;
+  border-top-left-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem
 }
 </style>

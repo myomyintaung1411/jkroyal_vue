@@ -4,7 +4,7 @@
             <singleDragonTiger :data="data" ></singleDragonTiger>
             <div  class=" scroll_main bg-slate-800 overflow-y-hidden relative">
                 <div @click="moveData()"
-                    class="dl-section r-section text-white whitespace-nowrap   h-full overflow-y-hidden  ">
+                    class="dl-section r-section text-white whitespace-nowrap scrollbar__   h-full overflow-y-hidden  ">
                     <!-- {{dl.lst}} -->
                     <div class="col c2  h-52   text-center  " v-for="(col, iCol) in dl.lst" :key="iCol">
                         <div class="cell w-[45px] text-center overflow-hidden " v-for="(c, iRow) in col" :key="iRow">

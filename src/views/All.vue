@@ -8,15 +8,15 @@
     </div>
     <div class="w-full">
         <div class="py-2 bg-slate-500 px-3 mx-5 text-xl">{{t('general.bjl')}}</div>
-        <div class="w-full overflow-x-scroll whitespace-nowrap  flex">
+        <div class="w-full overflow-x-scroll whitespace-nowrap  flex scrollbar__">
            <singleBjl v-for="data in bjlData?.fixs" :key="data.roomId" :data="data"></singleBjl>
         </div>
         <div class="py-2 bg-slate-500 px-3 mx-5 text-xl my-3">{{t('general.dragon')}}</div>
-        <div class="w-full overflow-x-scroll whitespace-nowrap  flex">
+        <div class="w-full overflow-x-scroll whitespace-nowrap  flex scrollbar__">
            <singleDragonTiger v-for="data in dragonTiger?.fixs" :key="data.roomId" :data="data"></singleDragonTiger>
         </div>
         <div class="py-2 bg-slate-500 px-3 mx-5 text-xl my-3">{{t('general.cow')}}</div>
-        <div class="w-full overflow-x-scroll   flex">
+        <div class="w-full overflow-x-scroll   flex scrollbar__">
           <singleCowCow v-for="data in cowcowData?.fixs" :key="data.roomId" :data="data" ></singleCowCow>
         </div>
     </div>
@@ -89,4 +89,28 @@ onMounted(() => {
 </script>
 
 <style>
+.scrollbar__ {
+  scrollbar-width: thin;
+  scrollbar-color: #debd6b #fff;
+   border-radius: 5px;
+    /* cursor:crosshair; */
+}
+
+
+/* For Chrome, EDGE, Opera, Others */
+.scrollbar__::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+}
+
+.scrollbar__::-webkit-scrollbar-track { 
+  background: #fff;
+   border-radius: 5px;
+}
+
+.scrollbar__::-webkit-scrollbar-thumb { 
+  background:#debd6b;
+   border-radius: 5px;
+}
 </style>

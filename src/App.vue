@@ -68,4 +68,9 @@ body {
   height: 100vh;
 
 }
+
+.__bg{
+  background-image: url(http://hj111111.com/PC/resource/assets/poke/poke_bg.png);
+  background-size: cover;
+}
 </style>

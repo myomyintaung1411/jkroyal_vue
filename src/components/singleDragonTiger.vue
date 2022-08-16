@@ -1,8 +1,8 @@
 <template>
     <div  @click="requstMore()"
         class=" overflow-hidden w-[500px] max-w-[500px] min-w-[500px] flex 
-         bg-slate-800 h-52  shadow-lg   shadow__  cursor-pointer " :class="routeName === '/dgtiger' || routeName === '/all' ? 'my-3 mx-5' : 'my-0'">
-        <div class="py-3 px-1 text-center relative flex flex-col justify-between   w-[150px] overflow-hidden   bg-[#350b2d] ">
+         bg-slate-800 h-52  shadow-xl   shadow__  cursor-pointer " :class="routeName === '/dgtiger' || routeName === '/all' ? 'my-3 mx-5' : 'my-0'">
+        <div class="py-3 px-1 text-center relative flex flex-col justify-between   w-[150px] overflow-hidden    bg-[#01134b] ">
             <p class="text-white font-medium text-3xl ">{{ data.roomName }}</p>
             <div class="text-white text-lg font-extrabold tracking-wide">
               <!-- 0 init, 1 start,2 stop,3 opening, 4 sending card resutl,5 payout -->
@@ -12,7 +12,7 @@
               <p v-else-if="data.state == '3'">开牌中</p>
               <p v-else-if="data.state == '4'">开奖</p>
               <p v-else-if="data.state == '5'">派彩</p>
-              <p v-else-if="data.state == '-1'" class="text-gray-400">等待操作</p>
+              <p v-else-if="data.state == '-1'" class="text-gray-200">等待操作</p>
             </div>
             <div>
                 <h1 class="text-lg font-bold tracking-wide text-white text-center ">局口:{{ data.cc }}</h1>

@@ -3,7 +3,7 @@
         <div v-if="data" class="w-full flex  ">
             <singleCowCow :data="data"></singleCowCow>
             <div class=" scroll_main bg-slate-800 overflow-y-hidden relative">
-                <div @click="moveData()" class="dl-section r-section  whitespace-nowrap   h-full overflow-y-hidden  ">
+                <div @click="moveData()" class="dl-section r-section scrollbar__  whitespace-nowrap   h-full overflow-y-hidden  ">
                     <!-- {{dl.lst}} -->
                     <div class="col c2  h-[280px]   text-center  " v-for="(item, idx) in nnp.lst" :key="idx">
                         <!-- {{item}} -->
