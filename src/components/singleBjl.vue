@@ -1,9 +1,9 @@
 <template>
   
     <div v-if="data" @click="requstMore()"
-        class=" overflow-hidden w-[500px] max-w-[500px] min-w-[500px] flex 
+        class=" overflow-hidden w-[500px] max-w-[500px] min-w-[500px] flex __testbg
          bg-slate-800 h-52  shadow-xl   shadow__  cursor-pointer " :class="routeName === '/bjl' || routeName === '/all' ? 'my-3 mx-5' : 'my-0'">
-        <div class="py-3 px-1 text-center relative flex flex-col justify-between   w-[150px] overflow-hidden   bg-slate-500 ">
+        <div class="py-3 px-1 text-center relative flex flex-col justify-between   w-[150px] overflow-hidden __bg  bg-slate-500 ">
             <p class="text-white font-medium text-3xl ">{{ data.roomName }}</p>
             <div class="text-white text-lg font-extrabold tracking-wide">
               <p v-if="data.state == '0'">开局</p>

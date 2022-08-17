@@ -117,10 +117,10 @@
                     {{ t('user_list.username') }}
                   </th>
                   <th class=" w-[20%]  min-w-[160px] text-lg  font-semibold text-white py-2  px-3 lg:px-4">
-                    Reference Name
+                    所属代理
                   </th>
                   <th class=" w-[10%]   min-w-[160px]   text-lg font-semibold  text-white py-2   px-3 lg:px-4 ">
-                    Ye
+                    余额
                   </th>
                   <th class=" w-[10%]   min-w-[160px]   text-lg font-semibold  text-white py-2  px-3 lg:px-4 ">
                     {{ t('online_page.device') }}

@@ -67,10 +67,15 @@ body {
   max-height: 100vh;
   height: 100vh;
 
+
 }
 
 .__bg{
-  background-image: url(http://hj111111.com/PC/resource/assets/poke/poke_bg.png);
+  background-image: url('@/assets/images/bgcard.jpg');
   background-size: cover;
 }
+/* .__testbg{
+    background-image: url(https://i.pinimg.com/564x/3e/37/df/3e37dff6907356cf8f784076c2f2f475.jpg);
+  background-size: cover;
+} */
 </style>

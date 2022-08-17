@@ -53,7 +53,7 @@
           <div class=" cursor-pointer">
             <div class="w-full h-14 px-3 rounded bg-slate-400 text-white 
           hover:text-[#debd6b] hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
-          hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 0 ? '__activeColor' : ''">
+          hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 0 ? '__activeColor' : '__bgItem'">
               <div class="flex items-center space-x-5 h-full">
                 <img src="@/assets/images/all.svg" class="w-14 h-14 text-[#e4cd76]" alt="">
                 <p class="text-2xl tracking-wide font-bold">{{ t('general.all') }}</p>
@@ -63,9 +63,9 @@
         </div>
         <div class="py-2 w-full" @click="clickData(1)">
           <div class=" cursor-pointer">
-            <div class="w-full h-14 px-3 rounded bg-slate-400 text-white
+            <div class="w-full h-14 px-3 rounded bg-slate-400 text-white 
           hover:text-[#debd6b] hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
-          hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 1 ? '__activeColor' : ''">
+          hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 1 ? '__activeColor' : '__bgItem'">
               <div class="flex items-center space-x-5 h-full">
                 <img src="@/assets/images/baccarat.svg" class="w-14 h-14 text-[#e4cd76]" alt="">
                 <p class="text-2xl tracking-wide font-bold">{{ t('general.bjl') }}</p>
@@ -77,7 +77,7 @@
           <div class=" cursor-pointer">
             <div class="w-full h-14 px-3 rounded bg-slate-400 text-white 
           hover:text-[#debd6b] hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
-          hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 2 ? '__activeColor' : ''">
+          hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 2 ? '__activeColor' : '__bgItem'">
               <div class="flex items-center space-x-5 h-full">
                 <img src="@/assets/images/dragon.svg" class="w-14 h-14 text-[#e4cd76]" alt="">
                 <p class="text-2xl tracking-wide font-bold">{{ t('general.dragon') }}</p>
@@ -89,7 +89,7 @@
           <div class=" cursor-pointer">
             <div class="w-full h-14 px-3 rounded bg-slate-400 text-white 
           hover:text-[#debd6b] hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
-          hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 3 ? '__activeColor' : ''">
+          hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 3 ? '__activeColor' : '__bgItem'">
               <!-- <p class="text-2xl tracking-wide font-medium">{{t('general.cow')}}</p> -->
               <div class="flex items-center space-x-5 h-full">
                 <img src="@/assets/images/cowcow.svg" class="w-14 h-14 text-[#e4cd76]" alt="">
@@ -102,7 +102,7 @@
           <div class=" cursor-pointer">
             <div class="w-full h-14 px-3 rounded bg-slate-400 text-white 
           hover:text-[#debd6b] hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
-          hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 4 ? '__activeColor' : ''">
+          hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 4 ? '__activeColor' : '__bgItem'">
               <!-- <p class="text-2xl tracking-wide font-medium">{{t('general.onlineUser')}}</p> -->
               <div class="flex items-center space-x-5 h-full">
                 <img src="@/assets/images/member.svg" class="w-14 h-14 text-[#e4cd76]" alt="" />
@@ -113,9 +113,9 @@
         </div>
         <div class="py-2 w-full" @click="clickData(5)">
           <div class=" cursor-pointer">
-            <div class="w-full h-14 px-3 rounded bg-slate-400 text-white
+            <div class="w-full h-14 px-3 rounded bg-slate-400 text-white 
           hover:text-[#debd6b] hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
-          hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 5 ? '__activeColor' : ''">
+          hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 5 ? '__activeColor' : '__bgItem'">
               <div class="flex items-center space-x-5 h-full">
                 <img src="@/assets/images/realtime.svg" class="w-14 h-14 text-[#e4cd76]" alt="" />
                 <p class="text-2xl tracking-wide font-bold">{{ t('general.real') }}</p>
@@ -124,8 +124,8 @@
           </div>
         </div>
         <div class="absolute bottom-0   m-auto left-0 right-0 cursor-pointer ">
-          <div @click="logout()" class="p-3 rounded bg-slate-50 flex justify-center items-center h-20">
-            <LogoutIcon class="w-10 h-10 text-[#e7ae1d]"></LogoutIcon>
+          <div @click="logout()" class="p-3 rounded bg-[#473903] flex justify-center items-center h-20 ">
+            <LogoutIcon class="w-10 h-10 text-white"></LogoutIcon>
           </div>
         </div>
       </div>
@@ -221,7 +221,7 @@ const clickData = (n) => {
 </script>
 <style scoped>
 .drawer_bg {
-  background: url("https://template.viserlab.com/casinous/demo/assets/images/banner/bg.png");
+  background: url("https://i.pinimg.com/564x/ed/97/64/ed9764cbd7ef51f88716199c35f9ed6b.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -298,6 +298,14 @@ const clickData = (n) => {
   background-color: rgb(100 116 139 / 1);
   color:#debd6b;
   border-top-left-radius: 1.5rem;
-  border-bottom-left-radius: 1.5rem
+  border-bottom-left-radius: 1.5rem;
+    background: url("https://i.pinimg.com/564x/ed/97/64/ed9764cbd7ef51f88716199c35f9ed6b.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.__bgItem{
+      background: url("https://i.pinimg.com/564x/af/8c/25/af8c251c8bf9f7930306f015accaad7f.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 </style>

@@ -2,7 +2,7 @@
     <div  @click="requstMore()"
         class="  w-[632px] max-w-[632px]  flex 
          bg-slate-800 h-[280px]  shadow-xl   shadow__  cursor-pointer " :class="routeName === '/cowcow' || routeName === '/all' ? 'my-3 mx-3' : 'my-0'">
-        <div class="py-3 px-1 text-center relative flex flex-col justify-between  w-[120px] overflow-hidden    bg-slate-500 ">
+        <div class="py-3 px-1 text-center relative flex flex-col justify-between  w-[120px] overflow-hidden  __bg  bg-slate-500 ">
             <p class="text-white font-medium text-3xl ">{{ data.roomName }}</p>
             <div class="text-white text-lg font-extrabold tracking-wide">
               <p v-if="data.state == '0'">开局</p>

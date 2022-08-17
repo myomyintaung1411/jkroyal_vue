@@ -9,7 +9,7 @@ export default {
     dragon:'龙虎',
     cow:'牛牛',
     onlineUser:'在线用户',
-    real:'即时的',
+    real:'时时下注',
    },
     route: {
       dashboard: '首页',

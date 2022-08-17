@@ -2,7 +2,7 @@
     <div  @click="requstMore()"
         class=" overflow-hidden w-[500px] max-w-[500px] min-w-[500px] flex 
          bg-slate-800 h-52  shadow-xl   shadow__  cursor-pointer " :class="routeName === '/dgtiger' || routeName === '/all' ? 'my-3 mx-5' : 'my-0'">
-        <div class="py-3 px-1 text-center relative flex flex-col justify-between   w-[150px] overflow-hidden    bg-[#01134b] ">
+        <div class="py-3 px-1 text-center relative flex flex-col justify-between   w-[150px] overflow-hidden  __bg   bg-[#01134b] ">
             <p class="text-white font-medium text-3xl ">{{ data.roomName }}</p>
             <div class="text-white text-lg font-extrabold tracking-wide">
               <!-- 0 init, 1 start,2 stop,3 opening, 4 sending card resutl,5 payout -->
