@@ -97,9 +97,9 @@
           </div>
         </Listbox>
       </div>
-      <div>
+      <div class="mt-1">
         <button @click="doFind()" type="submit"
-          class="bg-blue-600 shadow-md py-[6px] px-9 rounded outline-none focus:outline-none ease-in hover:bg-blue-900 ">{{ t('buttons.search') }}</button>
+          class="bg-[#473903] shadow-md h-[38px] px-9  rounded outline-none focus:outline-none ease-in hover:bg-[#7c6405] ">{{ t('buttons.search') }}</button>
       </div>
     </div>
     <section class="w-full min-w-full __tableHeight ">
@@ -290,19 +290,17 @@ function getOnlineMemberInfo() {
 </style>
 
 <style>
-.page-item {
-  @apply px-4 py-2 bg-blue-500
-}
-
-.page-link {
-  /* background: red !important; */
-  @apply bg-blue-500 px-4 py-2
-}
-
-.active-class {
-  display: inline-block;
-  color: #fff;
-  @apply bg-yellow-600 !important;
-
-}
+.page-item  {
+    @apply  px-4 py-2 bg-[#473903]
+  }
+  .page-link{
+    /* background: red !important; */
+    @apply bg-[#473903] px-4 py-2
+  }
+  .active-class{
+    display :inline-block;
+    color:#fff;
+    @apply bg-[#151515] !important;
+    
+  }
 </style>

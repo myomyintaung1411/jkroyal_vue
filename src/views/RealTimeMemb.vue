@@ -67,7 +67,7 @@
         w-80 py-2 focus:outline-none outline-none" placeholder="请输入账号" />
             <div>
                 <button @click="doFind()" type="submit"
-                    class="bg-blue-600 shadow-md py-[6px] px-9 rounded outline-none focus:outline-none ease-in hover:bg-blue-900 ">{{t('buttons.search')}}</button>
+                    class="bg-[#473903] shadow-md py-[6px] px-9 rounded outline-none focus:outline-none ease-in hover:bg-[#7c6405] ">{{t('buttons.search')}}</button>
             </div>
         </div>
         <section class="w-full min-w-full __tableHeight ">
@@ -381,16 +381,16 @@ function getOnTime() {
 
 <style>
 .page-item  {
-    @apply  px-4 py-2 bg-blue-500
+    @apply  px-4 py-2 bg-[#473903]
   }
   .page-link{
     /* background: red !important; */
-    @apply bg-blue-500 px-4 py-2
+    @apply bg-[#473903] px-4 py-2
   }
   .active-class{
     display :inline-block;
     color:#fff;
-    @apply bg-yellow-600 !important;
+    @apply bg-[#151515] !important;
     
   }
 </style>
