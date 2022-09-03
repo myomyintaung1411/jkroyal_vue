@@ -48,7 +48,8 @@ function updateState(msg)
   } 
   for (let i = 0; i < tableinfoData.length; i++) {
    // const element = array[index];
-    if(tableinfoData[i].roomId == msg.table_no && tableinfoData[i].rType == gameType){
+   console.log("room Info ******************",tableinfoData[i].roomName,msg.table_no,tableinfoData[i].rType,gameType);
+    if(tableinfoData[i].roomName == msg.table_no && tableinfoData[i].rType == gameType){
       tableinfoData[i].state = msg.state_code
     }
   }
