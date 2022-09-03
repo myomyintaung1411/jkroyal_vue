@@ -9,7 +9,7 @@ if (process.env.NODE_ENV == 'development') {
   BaseUrl = '/api'
 } else {
   //BaseUrl = 'http://103.246.113.24:8818/'
-  BaseUrl = 'http://103.246.113.24:8503/'
+  BaseUrl = '/api'
 }
 
 const instance = axios.create({

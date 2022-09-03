@@ -22,7 +22,8 @@
         </div>
       <div v-if="betsData?.length > 0" class="flex items-center justify-center">
             <Paginate v-model="pagination.currentPage" :page-count="Math.ceil(pagination.total / pagination.pageSize)"
-                :page-range="3" :margin-pages="1" :click-handler="clickCallback" :prev-text="'Prev'" :next-text="'Next'"
+                :page-range="3" :margin-pages="1" :click-handler="clickCallback" :prev-text="'上一页'" :next-text="'下一个'"
+        :last-button-text	="'最后'" :first-button-text = "'第一'"
                 :container-class="'pagination'" :hide-prev-next="true" :page-class="'page-item'" :first-last-button	="true"
                 class="flex items-center space-x-4" :no-li-surround="true" :page-link-class="'page-link'"
                 :active-class="'active-class'">

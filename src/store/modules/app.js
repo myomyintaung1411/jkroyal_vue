@@ -2,6 +2,7 @@ import Global from '@/utils/global.js'
 import AES from '@/utils/aes'
 import $ws from '../../socket/ws2'
 import {login} from '@/network/allApi'
+import NoticeMsg from "@/utils/alert";
 export default {
 
   state: () => ({
@@ -88,11 +89,13 @@ export default {
             reject()
           }
           if (msg.JsonData.enable === 0) {
+            NoticeMsg.Message('亲, 您的帐户被锁定, 请联系上级','warning')
             // Message.info('亲, 您的帐户被锁定, 请联系上级!')
             console.error('亲, 您的帐户被锁定, 请联系上级!');
             reject()
           }
           if (msg.JsonData.level === 3) {
+            NoticeMsg.Message('账号或密码错误!','error')
             console.error('账号或密码错误!');
             // Message.info('账号或密码错误!')
             reject()

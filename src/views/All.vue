@@ -38,6 +38,7 @@ const cowcowData = ref(null)
 const allData = computed(() => store.getters["app/All_Table_Info"]);
 const {t} = useI18n();
 const store = useStore();
+
 function getDeskLists(type) {
     console.log(type);
     const sendStr = {
@@ -77,9 +78,9 @@ function getDeskLists(type) {
       const sortData = fixtureData.sort((a, b) => a.rType.localeCompare(b.rType))
       console.log(sortData, "merged data ************");
 
-       bjlData.value = sortData[1]
-       dragonTiger.value = sortData[4]
-       cowcowData.value = sortData[5]
+       bjlData.value = sortData[0]
+       dragonTiger.value = sortData[1]
+       cowcowData.value = sortData[2]
      // return sortData;
     }
 store.commit('app/ALL_TABLE_INFO',null)

@@ -221,7 +221,7 @@ const clickData = (n) => {
 </script>
 <style scoped>
 .drawer_bg {
-  background: url("https://i.pinimg.com/564x/ed/97/64/ed9764cbd7ef51f88716199c35f9ed6b.jpg");
+  background: url("@/assets/bg_active.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -299,12 +299,12 @@ const clickData = (n) => {
   color:#debd6b;
   border-top-left-radius: 1.5rem;
   border-bottom-left-radius: 1.5rem;
-    background: url("https://i.pinimg.com/564x/ed/97/64/ed9764cbd7ef51f88716199c35f9ed6b.jpg");
+  background: url("@/assets/bg_active.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
 .__bgItem{
-      background: url("https://i.pinimg.com/564x/af/8c/25/af8c251c8bf9f7930306f015accaad7f.jpg");
+      background: url("@/assets/bgItem.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }

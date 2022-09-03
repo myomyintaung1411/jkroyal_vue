@@ -17,7 +17,7 @@ export default defineConfig({
     proxy: {
       '/api': {
         //target: 'http://124.248.245.226:3195/',
-        target: 'http://192.168.1.10:3198/',
+        target: 'http://jk.royalgaming.today:3198',
         ws: true,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')

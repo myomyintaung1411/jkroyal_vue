@@ -24,9 +24,9 @@ function conn(cb) {
   console.log("&&&&&&&", msg2);
   p_server.init(
     {
-      //host: process.env.NODE_ENV == 'development' ? process.env.VUE_APP_DEV_POMELO : process.env.VUE_APP_PRO_POMELO,
-      host: '192.168.1.10',
-      port: 8014,
+      host: process.env.NODE_ENV == 'development' ? 'jk.royalgaming.today' : window.location.host,
+      //host: window.location.host,
+      port: process.env.NODE_ENV ==  'development' ? '/conn1/' : '/conn1/',
       log: true
     },
 
@@ -38,9 +38,10 @@ function conn(cb) {
         if (res.code == 200) {
           p_server2.init(
             {
-              host: res.host,
-              //host: process.env.NODE_ENV == 'development' ? process.env.VUE_APP_DEV_POMELO : process.env.VUE_APP_PRO_POMELO,
-              port: res.port,
+              //host: res.host,
+             // host: window.location.host,
+              host: process.env.NODE_ENV == 'development' ? 'jk.royalgaming.today' : window.location.host,
+              port: process.env.NODE_ENV == 'development' ? '/conn2/'  : '/conn2/',
               log: true
             },
             function (res) {

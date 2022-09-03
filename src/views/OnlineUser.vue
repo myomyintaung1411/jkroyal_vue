@@ -107,7 +107,7 @@
         <div class="w-full h-full ">
           <div class="max-w-full min-w-full overflow-x-auto h-full">
             <table class="table-auto w-full bg-slate-600 ">
-              <thead>
+              <thead  class="border-b bg-slate-500">
                 <tr class=" bg-slate-500 text-center ">
                   <th
                     class=" w-[20%]  min-w-[160px] text-lg  font-semibold text-white py-2   px-3 lg:px-4 border-l border-transparent">
@@ -132,24 +132,24 @@
               </thead>
               <tbody v-if="onlineUserData?.tableData">
                 <tr v-for="(data, index) in onlineUserData.tableData" :key="index">
-                  <td class=" text-center text-dark  font-medium text-base py-2 px-2  border-b  border-[#E8E8E8]">
+                  <td class=" text-center text-dark  font-medium text-base py-2 px-2  border-b  border-slate-600">
                     {{ data.loginTime }}
                   </td>
-                  <td class=" text-center text-dark  font-medium text-base  py-2 px-2  border-b border-[#E8E8E8] ">
+                  <td class=" text-center text-dark  font-medium text-base  py-2 px-2  border-b border-slate-600 ">
                     {{ data.username }}
                   </td>
-                  <td class=" text-center text-dark font-medium text-base py-2 px-2  border-b border-[#E8E8E8] ">
+                  <td class=" text-center text-dark font-medium text-base py-2 px-2  border-b border-slate-600 ">
                     {{ data.reference_name }}
                   </td>
-                  <td class="   text-center text-dark font-medium text-base py-2   px-2   border-b border-[#E8E8E8] ">
+                  <td class="   text-center text-dark font-medium text-base py-2   px-2   border-b border-slate-600 ">
                     {{ data.ye }}
                   </td>
                   <td
-                    class="      text-center text-dark font-medium  text-base  py-2 px-2      border-b border-[#E8E8E8] ">
+                    class="      text-center text-dark font-medium  text-base  py-2 px-2      border-b border-slate-600 ">
                     {{ data.terminal }}
                   </td>
                   <td
-                    class="      text-center text-dark font-medium  text-base  py-2 px-2      border-b border-[#E8E8E8] ">
+                    class="      text-center text-dark font-medium  text-base  py-2 px-2      border-b border-slate-600 ">
                     {{ data.loginip }}
                   </td>
                 </tr>
@@ -161,7 +161,8 @@
     </section>
     <div v-if="onlineUserData?.tableData.length > 0" class="flex items-center justify-center">
       <Paginate v-model="pagination.currentPage" :page-count="Math.ceil(pagination.total / pagination.pageSize)"
-        :page-range="1" :margin-pages="1" :click-handler="clickCallback" :prev-text="'Prev'" :next-text="'Next'"
+        :page-range="1" :margin-pages="1" :click-handler="clickCallback" :prev-text="'上一页'" :next-text="'下一个'"
+        :last-button-text	="'最后'" :first-button-text = "'第一'"
         :container-class="'pagination'" :hide-prev-next="true" :page-class="'page-item'" :first-last-button="true"
         class="flex items-center space-x-4" :no-li-surround="true" :page-link-class="'page-link'"
         :active-class="'active-class'">
@@ -188,11 +189,11 @@ import moment from 'moment'
 import { useI18n } from "vue-i18n/index";
 import Paginate from "vuejs-paginate-next";
 const people = reactive([
-  { terminal: 'all' },
-  { terminal: 'h5' },
-  { terminal: 'android' },
-  { terminal: 'pc' },
-  { terminal: 'ios' },
+  { terminal: '全部' },
+  { terminal: 'H5' },
+  { terminal: '安卓' },
+  { terminal: '电脑' },
+  { terminal: '苹果' },
 ])
 const { t } = useI18n();
 const terminalName = ref(people[0])
