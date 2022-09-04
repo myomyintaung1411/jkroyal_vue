@@ -33,6 +33,7 @@ function eventMsg(msg){
 function updateState(msg)
 {
   let gameType = ''
+  let gameState = '-1';
   if(msg.game_type == 'Baccarat'){
     gameType = 'bjl'
   }

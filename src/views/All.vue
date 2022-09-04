@@ -6,18 +6,21 @@
              <singleCowCow v-if="all.rType === 'nn'" :data="all"></singleCowCow>
         </div> -->
     </div>
-    <div class="w-full">
+    <div v-if="allData?.length" class="w-full">
         <div class="py-2 bg-slate-500 px-3 mx-5 text-xl">{{t('general.bjl')}}</div>
         <div class="w-full overflow-x-scroll whitespace-nowrap  flex scrollbar__">
-           <singleBjl v-for="data in bjlData?.fixs" :key="data.roomId" :data="data"></singleBjl>
+           <!-- <singleBjl v-for="data in bjlData?.fixs" :key="data.roomId" :data="data"></singleBjl> -->
+            <singleBjl v-for="data in mergedData(allData)[0]?.fixs" :key="data.roomId" :data="data"></singleBjl> 
         </div>
         <div class="py-2 bg-slate-500 px-3 mx-5 text-xl my-3">{{t('general.dragon')}}</div>
         <div class="w-full overflow-x-scroll whitespace-nowrap  flex scrollbar__">
-           <singleDragonTiger v-for="data in dragonTiger?.fixs" :key="data.roomId" :data="data"></singleDragonTiger>
+           <singleDragonTiger v-for="data in mergedData(allData)[1]?.fixs" :key="data.roomId" :data="data"></singleDragonTiger>
+           <!-- <singleDragonTiger v-for="data in dragonTiger?.fixs" :key="data.roomId" :data="data"></singleDragonTiger> -->
         </div>
         <div class="py-2 bg-slate-500 px-3 mx-5 text-xl my-3">{{t('general.cow')}}</div>
         <div class="w-full overflow-x-scroll   flex scrollbar__">
-          <singleCowCow v-for="data in cowcowData?.fixs" :key="data.roomId" :data="data" ></singleCowCow>
+          <!-- <singleCowCow v-for="data in cowcowData?.fixs" :key="data.roomId" :data="data" ></singleCowCow> -->
+          <singleCowCow v-for="data in mergedData(allData)[2]?.fixs" :key="data.roomId" :data="data" ></singleCowCow> 
         </div>
     </div>
 </template>
@@ -29,8 +32,8 @@ import singleDragonTiger from "@/components/singleDragonTiger.vue";
 import { useI18n } from "vue-i18n/index";
 import { useStore } from "vuex";
 import pomelo from "@/socket/pomelo.js";
-import { ref, onMounted,computed } from 'vue'
-// const bjlData = ref(null)
+import { ref, onMounted,computed,watch, onBeforeUnmount } from 'vue'
+const timing = ref(null)
 const bjlData = ref(null)
 const dragonTiger = ref(null)
 const cowcowData = ref(null)
@@ -38,6 +41,17 @@ const cowcowData = ref(null)
 const allData = computed(() => store.getters["app/All_Table_Info"]);
 const {t} = useI18n();
 const store = useStore();
+
+// watch(() => allData.value,
+//   () => {
+//     console.log(allData.value);
+//   }, { immediate: true, deep: true })
+
+watch(
+  allData, (curr, old) => {
+    console.log(curr, old,"from watch *********************")
+  }
+)
 
 function getDeskLists(type) {
     console.log(type);
@@ -51,12 +65,12 @@ function getDeskLists(type) {
     }
     pomelo.send(sendStr, res => {
         // console.log('resp ', res)
-        if (res.JsonData.result == 'ok' && res.JsonData.data.length > 0) {
+        if (res.JsonData.result == 'ok' && res.JsonData.data?.length > 0) {
             console.log('resp ', res.JsonData.data)
             //allData.value = res.JsonData.data
              store.commit('app/ALL_TABLE_INFO',res.JsonData.data)
             // console.log('bjlData data ', bjlData.value)
-            mergedData(allData.value)
+           // mergedData(allData.value)
             console.log("rrrrrrrr");
         }
     })
@@ -77,15 +91,28 @@ function getDeskLists(type) {
       const fixtureData = Object.values(merged);
       const sortData = fixtureData.sort((a, b) => a.rType.localeCompare(b.rType))
       console.log(sortData, "merged data ************");
-
-       bjlData.value = sortData[0]
-       dragonTiger.value = sortData[1]
-       cowcowData.value = sortData[2]
-     // return sortData;
+      return sortData
+      //  bjlData.value = sortData[0]
+      //  dragonTiger.value = sortData[1]
+      //  cowcowData.value = sortData[2]
     }
+
+function requestDataEveryFiveSec() {
+  timing.value = setInterval(() => {
+    getDeskLists('all')
+    console.log("5 log second");
+  }, 5000);
+}
+
+onBeforeUnmount(() => {
+    clearInterval(timing.value)
+})
+
+
 store.commit('app/ALL_TABLE_INFO',null)
 onMounted(() => {
     getDeskLists('all')
+    requestDataEveryFiveSec()
 })
 </script>
 

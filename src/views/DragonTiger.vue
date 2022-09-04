@@ -8,8 +8,10 @@
 <script setup>
 import singleDragonTiger from "@/components/singleDragonTiger.vue";
 import pomelo from "@/socket/pomelo.js";
-import { ref, onMounted,computed } from 'vue'
+import { ref, onMounted,computed,onBeforeUnmount } from 'vue'
 import { useStore } from "vuex";
+
+const timing = ref(null)
 const store = useStore();
 
 //for props data
@@ -40,10 +42,25 @@ function getDragonTiger(type) {
         }
     })
 }
+
+
+function requestDataEveryFiveSec() {
+    timing.value = setInterval(() => {
+        getDragonTiger('lh')
+        console.log("5 log second");
+    }, 5000);
+}
+
+onBeforeUnmount(() => {
+    clearInterval(timing.value)
+})
+
+
 //null in created otherwise errors occured
 store.commit('app/ALL_TABLE_INFO',null)
 onMounted(() => {
     getDragonTiger('lh')
+    requestDataEveryFiveSec()
 })
 </script>
 

@@ -7,8 +7,10 @@
 <script setup>
 import singleBjl from "@/components/singleBjl.vue";
 import pomelo from "@/socket/pomelo.js";
-import { ref, onMounted,computed } from 'vue'
+import { ref, onMounted,computed,onBeforeUnmount,reactive } from 'vue'
 import { useStore } from "vuex";
+
+const timing = ref(null)
 
 //const bjlData = ref(null)
 const store = useStore();
@@ -36,9 +38,22 @@ function getBjlLists(type) {
         }
     })
 }
+
+function requestDataEveryFiveSec() {
+        timing.value = setInterval(() => {
+            getBjlLists('bjl')
+            console.log("5 log second");
+        }, 5000);
+}
+
+onBeforeUnmount(() => {
+    clearInterval(timing.value)
+})
+
 store.commit('app/ALL_TABLE_INFO',null)
 onMounted(() => {
     getBjlLists('bjl')
+    requestDataEveryFiveSec()
 })
 </script>
 

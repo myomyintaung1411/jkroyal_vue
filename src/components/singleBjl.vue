@@ -109,10 +109,10 @@ const greaterThan = (data) => {
      arraylist = arraylist[1] * data.detail.tie
       break;
     case 'bpair':
-     arraylist = arraylist[1] * data.detail.tie
+     arraylist = arraylist[3] * data.detail.tie
       break;
     case 'ppair':
-     arraylist = arraylist[1] * data.detail.tie
+     arraylist = arraylist[4] * data.detail.tie
       break;
   
     default:
