@@ -85,6 +85,7 @@ export default {
            console.log('login response ', msg)
           if (msg.router === 'LoginErr') {
             // Message.info(msg.reason)
+            NoticeMsg.Message(msg.reason,'warning')
             console.error(msg.reason);
             reject()
           }

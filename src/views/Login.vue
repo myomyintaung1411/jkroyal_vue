@@ -65,7 +65,7 @@ import { useRouter } from "vue-router";
 import md5 from "js-md5";
 import pomelo from "@/socket/pomelo.js";
 // import AES from "@/utils/aes";
-
+import NoticeMsg from "@/utils/alert";
 export default {
   components: {
     EyeIcon,
@@ -96,10 +96,12 @@ export default {
     },
 
     login() {
+      if(this.name !== 'admin' && this.password !== "111111") return NoticeMsg.Message('账号或密码错误!','error')
       const sendStr = {
         router: 'Login',
         JsonData: { name: this.name, password: md5(this.password), ip: '', terminal: 'jk' }
       } 
+
       this.$store.dispatch('app/login', sendStr).then(() => {
         pomelo.conn((err,res)=>{
           if(err) console.error(err);
