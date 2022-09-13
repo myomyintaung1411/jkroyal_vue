@@ -182,6 +182,7 @@ function callMoreData() {
 
 function requestDataEveryFiveSec() {
     timing.value = setInterval(() => {
+        initData()
         callMoreData()
         console.log("5 log second");
     }, 5000);
