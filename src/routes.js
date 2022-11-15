@@ -9,61 +9,67 @@ const routes = [
     path: '/',
     component: Home,
     meta: { title: 'Home' },
-    redirect:'/all',
+    redirect:'/hjSystem',
     children: [
+      // {
+      //   path: '/onlineuser',
+      //   name: 'OnlineUser',
+      //   component: () => import('./views/OnlineUser.vue'),
+      //   meta: { title: 'OnlineUser' }
+      // },
+      // {
+      //   path: '/realtimememb',
+      //   name: 'RealTimeMember',
+      //   component: () => import('./views/RealTimeMemb.vue'),
+      //   meta: { title: 'RealTimeMember' }
+      // },
+      // {
+      //   path: '/all',
+      //   name: 'All',
+      //   component: () => import('./views/All.vue'),
+      //   meta: { title: 'All' }
+      // },
+      // {
+      //   path: '/bjl',
+      //   name: 'Baccarat',
+      //   component: () => import('./views/Baccarat.vue'),
+      //   meta: { title: 'Baccarat' }
+      // },
+      // {
+      //   path: '/dgtiger',
+      //   name: 'DragonTiger',
+      //   component: () => import('./views/DragonTiger.vue'),
+      //   meta: { title: 'DragonTiger' }
+      // },
+      // {
+      //   path: '/cowcow',
+      //   name: 'CowCow',
+      //   component: () => import('./views/CowCow.vue'),
+      //   meta: { title: 'CowCow' }
+      // },
+      // {
+      //   path: '/detail',
+      //   name: 'Detail',
+      //   component: () => import('./views/Detail.vue'),
+      //   meta: { title: 'Detail' }
+      // },
+      // {
+      //   path: '/dragonDetail',
+      //   name: 'DragonTigerDetail',
+      //   component: () => import('./views/DragonTigerDetail.vue'),
+      //   meta: { title: 'DragonTigerDetail' }
+      // },
+      // {
+      //   path: '/nuDetail',
+      //   name: 'CowCowDetail',
+      //   component: () => import('./views/CowCowDetail.vue'),
+      //   meta: { title: 'CowCowDetail' }
+      // },
       {
-        path: '/onlineuser',
-        name: 'OnlineUser',
-        component: () => import('./views/OnlineUser.vue'),
-        meta: { title: 'OnlineUser' }
-      },
-      {
-        path: '/realtimememb',
-        name: 'RealTimeMember',
-        component: () => import('./views/RealTimeMemb.vue'),
-        meta: { title: 'RealTimeMember' }
-      },
-      {
-        path: '/all',
-        name: 'All',
-        component: () => import('./views/All.vue'),
-        meta: { title: 'All' }
-      },
-      {
-        path: '/bjl',
-        name: 'Baccarat',
-        component: () => import('./views/Baccarat.vue'),
-        meta: { title: 'Baccarat' }
-      },
-      {
-        path: '/dgtiger',
-        name: 'DragonTiger',
-        component: () => import('./views/DragonTiger.vue'),
-        meta: { title: 'DragonTiger' }
-      },
-      {
-        path: '/cowcow',
-        name: 'CowCow',
-        component: () => import('./views/CowCow.vue'),
-        meta: { title: 'CowCow' }
-      },
-      {
-        path: '/detail',
-        name: 'Detail',
-        component: () => import('./views/Detail.vue'),
-        meta: { title: 'Detail' }
-      },
-      {
-        path: '/dragonDetail',
-        name: 'DragonTigerDetail',
-        component: () => import('./views/DragonTigerDetail.vue'),
-        meta: { title: 'DragonTigerDetail' }
-      },
-      {
-        path: '/nuDetail',
-        name: 'CowCowDetail',
-        component: () => import('./views/CowCowDetail.vue'),
-        meta: { title: 'CowCowDetail' }
+        path: '/hjSystem',
+        name: 'hjSystem',
+        component: () => import('./views/HjSystem.vue'),
+        meta: { title: 'hjSystem' }
       },
     ]
   },
@@ -90,17 +96,17 @@ const router = createRouter({
   }
 })
 
-router.beforeEach((to, from, next) => {
-  const token = store.state.app.token
-  // If logged in, or going to the Login page.
-  if (token || to.name === 'Login') {
-    // Continue to page.
-    next()
-  } else {
-    // Not logged in, redirect to login.
-    next({ name: 'Login' })
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   const token = store.state.app.token
+//   // If logged in, or going to the Login page.
+//   if (token || to.name === 'Login') {
+//     // Continue to page.
+//     next()
+//   } else {
+//     // Not logged in, redirect to login.
+//     next({ name: 'Login' })
+//   }
+// });
 
 
 

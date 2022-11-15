@@ -123,6 +123,18 @@
             </div>
           </div>
         </div>
+        <div class="py-2 w-full" @click="clickData(6)">
+          <div class=" cursor-pointer">
+            <div class="w-full h-14 px-3 rounded bg-slate-400 text-white 
+          hover:text-[#debd6b] hover:bg-slate-500 text-center shadow-xl ease-in duration-300 
+          hover:rounded-tl-3xl hover:rounded-bl-3xl cursor-pointer" :class="activeTab === 6 ? '__activeColor' : '__bgItem'">
+              <div class="flex items-center space-x-5 h-full">
+                <ChipIcon class="w-10 h-10 text-[#e4cd76] ml-2"></ChipIcon>
+                <p class="text-2xl tracking-wide font-bold">Tab</p>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="absolute bottom-0   m-auto left-0 right-0 cursor-pointer ">
           <div @click="logout()" class="p-3 rounded bg-[#473903] flex justify-center items-center h-20 ">
             <LogoutIcon class="w-10 h-10 text-white"></LogoutIcon>
@@ -152,6 +164,7 @@ import {
   RadioGroupOption,
 } from "@headlessui/vue";
 import {
+  ChipIcon ,
   BellIcon,
   MenuIcon,
   XIcon,
@@ -192,26 +205,27 @@ const clickData = (n) => {
   console.log(n);
   activeTab.value = n
 
-  switch (activeTab.value) {
-    case 0:
-      router.push('/all')
-      // getDeskLists('all')
-      break;
-    case 1:
-      router.push('/bjl')
-      // getBjlLists('bjl')
-      break;
-    case 2:
-      router.push('/dgtiger')
-      break;
-    case 3:
-      router.push('/cowcow')
-      break;
-    case 4:
-      router.push('/onlineuser')
-      break;
-    case 5:
-      router.push('/realtimememb')
+  switch (n) {
+    // case 0:
+    //   router.push('/all')
+    //  break;
+    // case 1:
+    //   router.push('/bjl')
+    //   break;
+    // case 2:
+    //   router.push('/dgtiger')
+    //   break;
+    // case 3:
+    //   router.push('/cowcow')
+    //   break;
+    // case 4:
+    //   router.push('/onlineuser')
+    //   break;
+    // case 5:
+    //   router.push('/realtimememb')
+    //   break;
+    case 6:
+      router.push('/hjSystem')
       break;
 
     default:

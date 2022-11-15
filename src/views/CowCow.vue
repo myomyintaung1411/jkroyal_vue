@@ -49,10 +49,10 @@ onBeforeUnmount(() => {
 })
 
 store.commit('app/ALL_TABLE_INFO', null)
-onMounted(() => {
-    getDragonTiger('nn')
-    requestDataEveryFiveSec()
-})
+// onMounted(() => {
+//     getDragonTiger('nn')
+//     requestDataEveryFiveSec()
+// })
 </script>
 
 <style>
